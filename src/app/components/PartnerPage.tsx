@@ -141,10 +141,26 @@ export function PartnerPage() {
                    ) : (
                      <form onSubmit={async (e) => {
                         e.preventDefault();
+                        
+                        // Security: Rate limiting check
+                        const lastSubmit = sessionStorage.getItem('airbit_partner_submit_time');
+                        if (lastSubmit && Date.now() - parseInt(lastSubmit) < 60000) {
+                             alert('提交过于频繁，请稍后再试');
+                             return;
+                        }
+
+                        // Security: Honeypot check
+                        const formData = new FormData(e.currentTarget);
+                        const honeypot = formData.get('site_url'); // Hidden field
+                        if (honeypot) {
+                            console.log('Bot detected');
+                            setFormState('success'); // Fake success
+                            return;
+                        }
+
                         setFormState('submitting');
                         
                         try {
-                            const formData = new FormData(e.currentTarget);
                             const data = {
                                 name: formData.get('name'),
                                 title: formData.get('title'),
@@ -165,6 +181,7 @@ export function PartnerPage() {
                             });
 
                             if (res.ok) {
+                                sessionStorage.setItem('airbit_partner_submit_time', Date.now().toString());
                                 setFormState('success');
                             } else {
                                 console.error('Failed to submit');
@@ -178,6 +195,11 @@ export function PartnerPage() {
                         }
                      }} className="space-y-8">
                         
+                        {/* Security: Honeypot Field (Invisible to users) */}
+                        <div className="absolute opacity-0 -z-10 select-none pointer-events-none" aria-hidden="true">
+                            <input type="text" name="site_url" tabIndex={-1} autoComplete="off" />
+                        </div>
+
                         {/* Row 1: Identity & Email */}
                         <div className="grid md:grid-cols-2 gap-6">
                             {/* Name & Title Group */}
