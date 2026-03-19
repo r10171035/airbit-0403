@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Layers, DollarSign, Lock } from 'lucide-react';
+import { Link } from 'react-router';
 
 export function DeveloperExperience() {
   return (
@@ -97,18 +98,18 @@ export function DeveloperExperience() {
             加入全球领先企业的行列，让 AI 真正为业务创造价值。
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a 
-              href="#" 
+            <Link 
+              to="#" 
               className="px-8 py-3.5 rounded-full bg-[#0071E3] text-white font-medium hover:bg-[#0077ED] transition-all transform hover:scale-105 shadow-md hover:shadow-lg min-w-[140px]"
             >
               立即开始
-            </a>
-            <a 
-              href="#/contact" 
+            </Link>
+            <Link 
+              to="/contact" 
               className="px-8 py-3.5 rounded-full bg-white text-[#1D1D1F] border border-[#D2D2D7] font-medium hover:bg-gray-50 transition-all transform hover:scale-105 shadow-sm hover:shadow-md min-w-[140px]"
             >
               联系我们
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

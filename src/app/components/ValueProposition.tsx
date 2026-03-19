@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Activity, BarChart2, Eye, ArrowRight, GitBranch } from 'lucide-react';
+import { Link } from 'react-router';
 
 export function ValueProposition() {
   return (
@@ -31,9 +32,9 @@ export function ValueProposition() {
               它不只是监控，更是 AI 应用的黑匣子与指挥塔。
             </p>
 
-            <a href="#" className="inline-flex items-center text-[#0071E3] hover:underline font-medium text-base mb-12 group">
+            <Link to="#" className="inline-flex items-center text-[#0071E3] hover:underline font-medium text-base mb-12 group">
               探索 AIO 的能力 <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
 
             <div className="space-y-8">
               {/* Feature 1 */}

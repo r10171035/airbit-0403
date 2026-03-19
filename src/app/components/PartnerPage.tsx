@@ -2,8 +2,14 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Handshake, Layers, Cpu, CheckCircle2, Send, ChevronDown, ArrowRight } from 'lucide-react';
 import { projectId, publicAnonKey } from '/utils/supabase/info';
+import { useSEO } from '../hooks/useSEO';
 
 export function PartnerPage() {
+  useSEO({ 
+    title: '合作伙伴 | AirBit - 成为合作伙伴', 
+    description: '加入 AirBit 合作伙伴生态体系，携手共建智能未来，共享数字化转型机遇。',
+    path: '/partner'
+  });
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   return (

@@ -1,7 +1,15 @@
 import { Check, Minus, X, Info } from 'lucide-react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router';
+import { useSEO } from '../hooks/useSEO';
 
 export function PricingPage() {
+  useSEO({ 
+    title: '定价计划 | AirBit', 
+    description: '选择适合您团队的版本。从探索验证到企业级规模落地，AirBit 都能提供完美的支持。',
+    path: '/pricing'
+  });
+
   const plans = [
     {
       name: '轻量版',
@@ -24,7 +32,7 @@ export function PricingPage() {
       description: '专为大型企业与复杂业务架构设计，提供私有化部署及定制服务。',
       buttonText: '联系销售',
       buttonPrimary: false,
-      href: '#/contact'
+      href: '/contact'
     }
   ];
 
@@ -256,12 +264,12 @@ export function PricingPage() {
                   {plan.period && <span className="text-[#86868B] text-[13px] lg:text-[14px] font-medium ml-1">{plan.period}</span>}
                 </div>
                 
-                <a 
-                  href={plan.href || '#'}
-                  className={`w-full py-3.5 rounded-full text-center font-medium text-[15px] transition-all ${overrides.btnClass}`}
+                <Link 
+                  to={plan.href || '#'}
+                  className={`w-full py-3.5 rounded-full text-center font-medium text-[15px] transition-all flex items-center justify-center ${overrides.btnClass}`}
                 >
                   {overrides.btnText}
-                </a>
+                </Link>
               </motion.div>
             );
           })}

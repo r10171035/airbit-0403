@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { useSEO } from '../hooks/useSEO';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -524,6 +525,11 @@ function CTA() {
 }
 
 export function AirBitAIGatewayPage() {
+  useSEO({ 
+    title: 'AirBit AI Gateway | 企业级智能流量管家', 
+    description: '将不同厂商的 AI 模型标准化为 OpenAI 格式，提供路由、限流、容灾及统一安全管控的企业级大模型网关。',
+    path: '/airbit-ai-gateway'
+  });
   return (
     <div className="bg-white min-h-screen">
       <Hero />

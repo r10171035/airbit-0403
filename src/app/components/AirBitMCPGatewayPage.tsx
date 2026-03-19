@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { useSEO } from '../hooks/useSEO';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -575,6 +576,11 @@ function CTA() {
 }
 
 export function AirBitMCPGatewayPage() {
+  useSEO({ 
+    title: 'AirBit MCP Gateway | 智能体治理网关', 
+    description: '为模型提供规范化的外部工具调用能力，支持多后端路由、协议桥接及统一鉴权的模型上下文协议(MCP)治理网关。',
+    path: '/airbit-mcp-gateway'
+  });
   return (
     <div className="bg-white min-h-screen">
       <Hero />

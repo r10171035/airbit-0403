@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Shield, Zap, Network, Puzzle, Bot, Activity, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router';
 
 export function ProductMatrix() {
   const products = [
@@ -105,12 +106,12 @@ export function ProductMatrix() {
                 </p>
 
                 {/* Link */}
-                <a 
-                  href={product.href || '#'} 
+                <Link 
+                  to={product.href?.replace('#', '') || '#'} 
                   className="inline-flex items-center text-[#0071E3] hover:underline font-medium text-sm group-hover:translate-x-1 transition-transform"
                 >
                   了解更多 <ArrowRight className="w-4 h-4 ml-1" />
-                </a>
+                </Link>
               </motion.div>
             );
           })}

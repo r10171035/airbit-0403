@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { useSEO } from '../hooks/useSEO';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -603,6 +604,11 @@ function SpecsAndCTA() {
 }
 
 export function AirBitEipsPage() {
+  useSEO({ 
+    title: 'AirBit EIPs | 企业集成框架', 
+    description: '内置 300+ 现成连接组件的企业应用集成框架，加速构建统一、高效的数据互通网络，彻底打通企业信息孤岛。',
+    path: '/airbit-eips'
+  });
   return (
     <div className="bg-white min-h-screen">
       <Hero />

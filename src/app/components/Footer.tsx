@@ -2,6 +2,7 @@ import { Github } from 'lucide-react';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import logoSvg from "../../imports/logo.svg";
 import wechatIcon from "figma:asset/7695679c5ee873b4251081de7d0f0ba00b4a77f3.png";
+import { Link } from 'react-router';
 
 function WeChat(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -61,12 +62,12 @@ export function Footer() {
             <div>
               <h4 className="text-[#1D1D1F] font-semibold mb-6 text-sm">产品</h4>
               <ul className="space-y-3 text-sm">
-                <li><a href="#/airbit-ai-gateway" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">AirBit AI Gateway</a></li>
-                <li><a href="#/airbit-guardrails" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">AirBit Guardrails</a></li>
-                <li><a href="#/airbit-aio" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">AirBit AIO</a></li>
-                <li><a href="#/airbit-mcp-gateway" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">AirBit MCP Gateway</a></li>
-                <li><a href="#/airbit-apis" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">AirBit APIs</a></li>
-                <li><a href="#/airbit-eips" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">AirBit EIPs</a></li>
+                <li><Link to="/airbit-ai-gateway" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">AirBit AI Gateway</Link></li>
+                <li><Link to="/airbit-guardrails" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">AirBit Guardrails</Link></li>
+                <li><Link to="/airbit-aio" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">AirBit AIO</Link></li>
+                <li><Link to="/airbit-mcp-gateway" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">AirBit MCP Gateway</Link></li>
+                <li><Link to="/airbit-apis" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">AirBit APIs</Link></li>
+                <li><Link to="/airbit-eips" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">AirBit EIPs</Link></li>
               </ul>
             </div>
 
@@ -74,12 +75,12 @@ export function Footer() {
             <div>
               <h4 className="text-[#1D1D1F] font-semibold mb-6 text-sm">市场</h4>
               <ul className="space-y-3 text-sm">
-                <li><a href="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">插件包</a></li>
-                <li><a href="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">第三方插件</a></li>
-                <li><a href="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">金融行业</a></li>
-                <li><a href="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">通用行业</a></li>
-                <li><a href="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">查找伙伴</a></li>
-                <li><a href="#/partner" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">成为伙伴</a></li>
+                <li><Link to="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">插件包</Link></li>
+                <li><Link to="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">第三方插件</Link></li>
+                <li><Link to="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">金融行业</Link></li>
+                <li><Link to="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">通用行业</Link></li>
+                <li><Link to="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">查找伙伴</Link></li>
+                <li><Link to="/partner" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">成为伙伴</Link></li>
               </ul>
             </div>
 
@@ -87,10 +88,10 @@ export function Footer() {
             <div>
               <h4 className="text-[#1D1D1F] font-semibold mb-6 text-sm">资料</h4>
               <ul className="space-y-3 text-sm">
-                <li><a href="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">文档 4.x</a></li>
-                <li><a href="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">协议许可</a></li>
-                <li><a href="#/company" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">公司介绍</a></li>
-                <li><a href="#/contact" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">联系我们</a></li>
+                <li><Link to="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">文档 4.x</Link></li>
+                <li><Link to="#" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">协议许可</Link></li>
+                <li><Link to="/company" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">公司介绍</Link></li>
+                <li><Link to="/contact" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">联系我们</Link></li>
               </ul>
             </div>
 

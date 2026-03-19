@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Link } from 'react-router';
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,22 +11,22 @@ export function Navigation() {
     {
       category: '连接与集成',
       items: [
-        { name: 'AirBit Apis', desc: '云原生动态网关', href: '#/airbit-apis' },
-        { name: 'AirBit Eips', desc: '集成模式框架', href: '#/airbit-eips' },
+        { name: 'AirBit Apis', desc: '云原生动态网关', href: '/airbit-apis' },
+        { name: 'AirBit Eips', desc: '集成模式框架', href: '/airbit-eips' },
       ]
     },
     {
       category: 'AI 基础设施',
       items: [
-        { name: 'AirBit AI Gateway', desc: '智能流量管家', href: '#/airbit-ai-gateway' },
-        { name: 'AirBit MCP Gateway', desc: '智能体治理网关', href: '#/airbit-mcp-gateway' },
+        { name: 'AirBit AI Gateway', desc: '智能流量管家', href: '/airbit-ai-gateway' },
+        { name: 'AirBit MCP Gateway', desc: '智能体治理网关', href: '/airbit-mcp-gateway' },
       ]
     },
     {
       category: '治理与运维',
       items: [
-        { name: 'AirBit Guardrails', desc: '可编程安全护栏', href: '#/airbit-guardrails' },
-        { name: 'AirBit AIO', desc: '全栈可观测平台', href: '#/airbit-aio' },
+        { name: 'AirBit Guardrails', desc: '可编程安全护栏', href: '/airbit-guardrails' },
+        { name: 'AirBit AIO', desc: '全栈可观测平台', href: '/airbit-aio' },
       ]
     }
   ];
@@ -49,7 +50,7 @@ export function Navigation() {
       category: '合作伙伴',
       items: [
         { name: '查找伙伴', pending: true },
-        { name: '成为伙伴', pending: false, href: '#/partner' },
+        { name: '成为伙伴', pending: false, href: '/partner' },
       ]
     }
   ];
@@ -57,8 +58,8 @@ export function Navigation() {
   const resources = [
     { name: '文档 4.x', href: '#' },
     { name: '协议许可', href: '#' },
-    { name: '公司介绍', href: '#/company' },
-    { name: '联系我们', href: '#/contact' },
+    { name: '公司介绍', href: '/company' },
+    { name: '联系我们', href: '/contact' },
   ];
 
   return (
@@ -67,9 +68,9 @@ export function Navigation() {
         <div className="flex items-center justify-between h-12">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="#/" className="text-xl font-semibold tracking-tight text-[#1D1D1F]">
+            <Link to="/" className="text-xl font-semibold tracking-tight text-[#1D1D1F]">
               AirBit
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -103,14 +104,14 @@ export function Navigation() {
                           </h4>
                           <div className="flex flex-col gap-3">
                             {category.items.map((item, itemIdx) => (
-                              <a
+                              <Link
                                 key={itemIdx}
-                                href={item.href || '#'}
+                                to={item.href || '#'}
                                 className="group block"
                               >
                                 <div className="text-[#1D1D1F] text-sm group-hover:text-[#0071E3] transition-colors font-medium mb-0.5">{item.name}</div>
                                 {item.desc && <div className="text-[11px] text-[#86868B] leading-tight">{item.desc}</div>}
-                              </a>
+                              </Link>
                             ))}
                           </div>
                         </div>
@@ -149,9 +150,9 @@ export function Navigation() {
                           </h4>
                           <div className="flex flex-col gap-3">
                             {category.items.map((item, itemIdx) => (
-                              <a
+                              <Link
                                 key={itemIdx}
-                                href={item.href || '#'}
+                                to={item.href || '#'}
                                 className={`group block ${item.pending ? 'cursor-not-allowed opacity-60' : ''}`}
                                 onClick={(e) => item.pending && e.preventDefault()}
                               >
@@ -163,7 +164,7 @@ export function Navigation() {
                                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#F5F5F7] text-[#86868B] border border-[#E5E5EA]">即将推出</span>
                                    )}
                                 </div>
-                              </a>
+                              </Link>
                             ))}
                           </div>
                         </div>
@@ -196,13 +197,13 @@ export function Navigation() {
                   >
                     <div className="flex flex-col">
                       {resources.map((item, idx) => (
-                        <a
+                        <Link
                           key={idx}
-                          href={item.href}
+                          to={item.href}
                           className="px-4 py-2.5 rounded-lg hover:bg-[#F5F5F7] text-[#1D1D1F] hover:text-[#0071E3] transition-colors text-sm"
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </motion.div>
@@ -210,14 +211,14 @@ export function Navigation() {
               </AnimatePresence>
             </div>
 
-            <a href="#/pricing" className="text-[#1D1D1F] hover:text-[#0071E3] transition-colors text-[16px]">定价</a>
+            <Link to="/pricing" className="text-[#1D1D1F] hover:text-[#0071E3] transition-colors text-[16px]">定价</Link>
           </div>
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-4 text-xs font-medium">
-            <a href="#/contact" className="px-4 py-1.5 bg-[#0071E3] text-white rounded-full hover:bg-[#0077ED] transition-colors">
+            <Link to="/contact" className="px-4 py-1.5 bg-[#0071E3] text-white rounded-full hover:bg-[#0077ED] transition-colors">
               联系我们
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -245,7 +246,7 @@ export function Navigation() {
                     <div key={cat.category} className="mb-3">
                       <div className="text-xs text-[#86868B] mb-1">{cat.category}</div>
                       {cat.items.map(item => (
-                        <a key={item.name} href={item.href || '#'} className="block py-1 pl-2 text-[#1D1D1F]">{item.name}</a>
+                        <Link key={item.name} to={item.href || '#'} className="block py-1 pl-2 text-[#1D1D1F]" onClick={() => setIsOpen(false)}>{item.name}</Link>
                       ))}
                     </div>
                   ))}
@@ -256,9 +257,9 @@ export function Navigation() {
                     <div key={cat.category} className="mb-3">
                       <div className="text-xs text-[#86868B] mb-1">{cat.category}</div>
                       {cat.items.map(item => (
-                        <a key={item.name} href={item.href || '#'} className={`block py-1 pl-2 ${item.pending ? 'text-[#86868B]' : 'text-[#1D1D1F]'}`}>
+                        <Link key={item.name} to={item.href || '#'} className={`block py-1 pl-2 ${item.pending ? 'text-[#86868B]' : 'text-[#1D1D1F]'}`} onClick={(e) => { if (item.pending) { e.preventDefault(); } else { setIsOpen(false); } }}>
                           {item.name} {item.pending && '(即将推出)'}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   ))}
@@ -266,15 +267,15 @@ export function Navigation() {
                  <div className="py-2 border-b border-[#F5F5F7]">
                   <div className="text-[#86868B] text-xs mb-2 uppercase tracking-wider">资料</div>
                   {resources.map(item => (
-                    <a key={item.name} href={item.href || '#'} className="block py-1 pl-2 text-[#1D1D1F]">{item.name}</a>
+                    <Link key={item.name} to={item.href || '#'} className="block py-1 pl-2 text-[#1D1D1F]" onClick={() => setIsOpen(false)}>{item.name}</Link>
                   ))}
                 </div>
-                <a href="#/pricing" className="py-3 text-[#1D1D1F]">定价</a>
+                <Link to="/pricing" className="py-3 text-[#1D1D1F]" onClick={() => setIsOpen(false)}>定价</Link>
                 
                 <div className="flex flex-col gap-3 pt-4 border-t border-[#F5F5F7] mt-2">
-                  <a href="#/contact" className="w-full py-2.5 bg-[#0071E3] text-white rounded-lg text-sm font-medium text-center block">
+                  <Link to="/contact" className="w-full py-2.5 bg-[#0071E3] text-white rounded-lg text-sm font-medium text-center block" onClick={() => setIsOpen(false)}>
                     联系我们
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>

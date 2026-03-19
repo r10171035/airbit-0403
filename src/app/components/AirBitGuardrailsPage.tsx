@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { useSEO } from '../hooks/useSEO';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -594,6 +595,11 @@ function CTA() {
 }
 
 export function AirBitGuardrailsPage() {
+  useSEO({ 
+    title: 'AirBit Guardrails | 可编程安全护栏', 
+    description: '基于特定策略对 AI 对话的输入和输出进行检测、拦截与重写的可编程安全防护系统，保障企业 AI 应用合规落地。',
+    path: '/airbit-guardrails'
+  });
   return (
     <div className="min-h-screen bg-white pb-20 lg:pb-0">
       <Hero />

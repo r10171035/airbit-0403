@@ -2,8 +2,14 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Mail, MessageSquare, MapPin, Phone, ArrowRight, CheckCircle2, Send, ChevronDown } from 'lucide-react';
 import { projectId, publicAnonKey } from '/utils/supabase/info';
+import { useSEO } from '../hooks/useSEO';
 
 export function ContactPage() {
+  useSEO({ 
+    title: '联系我们 | AirBit', 
+    description: '无论是产品咨询、技术支持还是商务合作，我们随时为您提供帮助。',
+    path: '/contact'
+  });
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
   
   const handleSubmit = (e: React.FormEvent) => {

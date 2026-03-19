@@ -1,7 +1,14 @@
 import { motion } from 'motion/react';
 import { Network, Layers, Bot, ShieldCheck, Activity, Building2, Briefcase, ShoppingBag, Landmark, CircuitBoard } from 'lucide-react';
+import { useSEO } from '../hooks/useSEO';
 
 export function CompanyPage() {
+  useSEO({ 
+    title: '公司介绍 | AirBit - 厦门天临科技有限公司', 
+    description: '厦门天临科技有限公司是一家领先的企业级 API 与 AI 基础设施解决方案提供商。',
+    path: '/company'
+  });
+
   return (
     <div className="min-h-screen bg-white font-sans text-[#1D1D1F] pt-20">
       

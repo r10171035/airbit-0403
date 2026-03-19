@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { useSEO } from '../hooks/useSEO';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -444,6 +445,11 @@ function MobileNav() {
 }
 
 export function AirBitAIOPage() {
+  useSEO({ 
+    title: 'AirBit AIO | 全栈可观测平台', 
+    description: '为企业提供从传统微服务到大模型应用的端到端监控、日志分析与性能追踪能力的全栈可观测平台。',
+    path: '/airbit-aio'
+  });
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-blue-100 selection:text-blue-900">
       <Hero />

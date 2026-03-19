@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { useSEO } from '../hooks/useSEO';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -482,6 +483,11 @@ function CTA() {
 }
 
 export function AirBitApisPage() {
+  useSEO({ 
+    title: 'AirBit APIs | 云原生动态网关', 
+    description: '接管进入企业所有流量的高性能 API 网关，提供身份认证、负载均衡、限流熔断等核心治理能力。',
+    path: '/airbit-apis'
+  });
   return (
     <div className="bg-white min-h-screen">
       <Hero />
