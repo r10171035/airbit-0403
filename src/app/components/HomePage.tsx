@@ -1,5 +1,6 @@
 import { HeroSection } from './HeroSection';
 import { ValueProposition } from './ValueProposition';
+import { AirBitPortalHighlight } from './AirBitPortalHighlight';
 import { ProductMatrix } from './ProductMatrix';
 import { DeveloperExperience } from './DeveloperExperience';
 import { TrustSection } from './TrustSection';
@@ -17,6 +18,7 @@ export function HomePage() {
     <>
       <HeroSection />
       <ValueProposition />
+      <AirBitPortalHighlight />
       <ProductMatrix />
       <DeveloperExperience />
       <TrustSection />

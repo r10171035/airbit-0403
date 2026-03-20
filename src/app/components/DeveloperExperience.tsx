@@ -30,8 +30,8 @@ export function DeveloperExperience() {
             whileHover={{ y: -8 }}
             className="text-center flex flex-col items-center group cursor-default"
           >
-            <div className="w-20 h-20 rounded-full bg-gradient-to-b from-[#0071E3] to-[#0077ED] flex items-center justify-center mb-8 shadow-lg shadow-blue-500/20 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-blue-500/40">
-              <Layers className="text-white w-9 h-9 stroke-[2]" />
+            <div className="w-20 h-20 rounded-full bg-[#F5F5F7] group-hover:bg-[#0071E3] flex items-center justify-center mb-8 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-blue-500/30">
+              <Layers className="text-[#1D1D1F] group-hover:text-white w-9 h-9 stroke-[2] transition-colors duration-300" />
             </div>
             <h3 className="text-2xl font-semibold text-[#1D1D1F] mb-4 group-hover:text-[#0071E3] transition-colors duration-300">
               架构级解耦
@@ -50,10 +50,10 @@ export function DeveloperExperience() {
             whileHover={{ y: -8 }}
             className="text-center flex flex-col items-center group cursor-default"
           >
-            <div className="w-20 h-20 rounded-full bg-gradient-to-b from-[#AF52DE] to-[#BF5AF2] flex items-center justify-center mb-8 shadow-lg shadow-purple-500/20 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-purple-500/40">
-              <DollarSign className="text-white w-9 h-9 stroke-[2]" />
+            <div className="w-20 h-20 rounded-full bg-[#F5F5F7] group-hover:bg-[#0071E3] flex items-center justify-center mb-8 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-blue-500/30">
+              <DollarSign className="text-[#1D1D1F] group-hover:text-white w-9 h-9 stroke-[2] transition-colors duration-300" />
             </div>
-            <h3 className="text-2xl font-semibold text-[#1D1D1F] mb-4 group-hover:text-[#AF52DE] transition-colors duration-300">
+            <h3 className="text-2xl font-semibold text-[#1D1D1F] mb-4 group-hover:text-[#0071E3] transition-colors duration-300">
               成本透明化
             </h3>
             <p className="text-[#86868B] text-[15px] leading-relaxed max-w-[280px]">
@@ -70,10 +70,10 @@ export function DeveloperExperience() {
             whileHover={{ y: -8 }}
             className="text-center flex flex-col items-center group cursor-default"
           >
-            <div className="w-20 h-20 rounded-full bg-gradient-to-b from-[#34C759] to-[#30B350] flex items-center justify-center mb-8 shadow-lg shadow-green-500/20 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-green-500/40">
-              <Lock className="text-white w-9 h-9 stroke-[2]" />
+            <div className="w-20 h-20 rounded-full bg-[#F5F5F7] group-hover:bg-[#0071E3] flex items-center justify-center mb-8 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-blue-500/30">
+              <Lock className="text-[#1D1D1F] group-hover:text-white w-9 h-9 stroke-[2] transition-colors duration-300" />
             </div>
-            <h3 className="text-2xl font-semibold text-[#1D1D1F] mb-4 group-hover:text-[#34C759] transition-colors duration-300">
+            <h3 className="text-2xl font-semibold text-[#1D1D1F] mb-4 group-hover:text-[#0071E3] transition-colors duration-300">
               企业级合规
             </h3>
             <p className="text-[#86868B] text-[15px] leading-relaxed max-w-[280px]">

@@ -79,8 +79,8 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* 底部渐变 */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+      {/* 底部渐变平滑过渡到下一个区域 */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#FAFAFC] to-transparent pointer-events-none" />
     </section>
   );
 }

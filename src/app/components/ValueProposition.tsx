@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 export function ValueProposition() {
   return (
-    <section className="py-32 bg-white overflow-hidden">
+    <section className="py-32 bg-[#FAFAFC] overflow-hidden border-t border-[#F5F5F7]">
       <div className="max-w-[1080px] mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           
@@ -19,7 +19,7 @@ export function ValueProposition() {
               AirBit AIO
             </h2>
             <h3 className="text-4xl sm:text-5xl font-bold text-[#1D1D1F] mb-8 leading-tight tracking-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0071E3] to-[#AF52DE]">
+              <span className="text-[#0071E3]">
                 看见黑盒
               </span>
               ，<br />
@@ -39,8 +39,8 @@ export function ValueProposition() {
             <div className="space-y-8">
               {/* Feature 1 */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
-                  <GitBranch className="w-6 h-6 text-[#0071E3]" />
+                <div className="w-12 h-12 rounded-full bg-[#F5F5F7] flex items-center justify-center flex-shrink-0">
+                  <GitBranch className="w-6 h-6 text-[#1D1D1F]" />
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-[#1D1D1F] mb-1">全链路追踪</h4>
@@ -50,8 +50,8 @@ export function ValueProposition() {
 
               {/* Feature 2 */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center flex-shrink-0">
-                  <BarChart2 className="w-6 h-6 text-[#AF52DE]" />
+                <div className="w-12 h-12 rounded-full bg-[#F5F5F7] flex items-center justify-center flex-shrink-0">
+                  <BarChart2 className="w-6 h-6 text-[#1D1D1F]" />
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-[#1D1D1F] mb-1">Prompt 管理</h4>
@@ -61,8 +61,8 @@ export function ValueProposition() {
 
               {/* Feature 3 */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0">
-                  <Eye className="w-6 h-6 text-[#34C759]" />
+                <div className="w-12 h-12 rounded-full bg-[#F5F5F7] flex items-center justify-center flex-shrink-0">
+                  <Eye className="w-6 h-6 text-[#1D1D1F]" />
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-[#1D1D1F] mb-1">幻觉评估</h4>
@@ -81,7 +81,7 @@ export function ValueProposition() {
             className="relative"
           >
             {/* Main Card */}
-            <div className="bg-[#F5F5F7] rounded-[24px] p-8 shadow-2xl border border-white/50 relative overflow-hidden backdrop-blur-xl">
+            <div className="bg-white rounded-[24px] p-8 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] border border-[#E5E5EA] relative overflow-hidden">
               {/* Window Controls */}
               <div className="flex items-center gap-2 mb-8">
                 <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
@@ -96,31 +96,31 @@ export function ValueProposition() {
                   initial={{ width: "0%" }}
                   whileInView={{ width: "100%" }}
                   transition={{ duration: 1, delay: 0.4 }}
-                  className="h-8 rounded-lg bg-gradient-to-r from-[#0071E3] to-[#AF52DE] opacity-90"
+                  className="h-8 rounded-lg bg-[#0071E3] opacity-90"
                 />
                 <motion.div 
                   initial={{ width: "0%" }}
                   whileInView={{ width: "80%" }}
                   transition={{ duration: 1, delay: 0.5 }}
-                  className="h-8 rounded-lg bg-gradient-to-r from-[#0071E3] to-[#AF52DE] opacity-80"
+                  className="h-8 rounded-lg bg-[#0071E3] opacity-70"
                 />
                 <motion.div 
                   initial={{ width: "0%" }}
                   whileInView={{ width: "60%" }}
                   transition={{ duration: 1, delay: 0.6 }}
-                  className="h-8 rounded-lg bg-gradient-to-r from-[#0071E3] to-[#AF52DE] opacity-70"
+                  className="h-8 rounded-lg bg-[#0071E3] opacity-50"
                 />
                 <motion.div 
                   initial={{ width: "0%" }}
                   whileInView={{ width: "90%" }}
                   transition={{ duration: 1, delay: 0.7 }}
-                  className="h-8 rounded-lg bg-gradient-to-r from-[#0071E3] to-[#AF52DE] opacity-60"
+                  className="h-8 rounded-lg bg-[#0071E3] opacity-30"
                 />
                 <motion.div 
                   initial={{ width: "0%" }}
                   whileInView={{ width: "40%" }}
                   transition={{ duration: 1, delay: 0.8 }}
-                  className="h-8 rounded-lg bg-gradient-to-r from-[#0071E3] to-[#AF52DE] opacity-50"
+                  className="h-8 rounded-lg bg-[#0071E3] opacity-20"
                 />
               </div>
 

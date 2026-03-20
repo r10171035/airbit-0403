@@ -8,14 +8,12 @@ export function ProductMatrix() {
       name: 'Guardrails',
       subtitle: '安全，是第一要务。',
       description: '输入输出双向护栏，PII 脱敏，合规检测。让模型从此不再「胡说八道」。',
-      color: '#FF3B30', // Red/Orange for Security
       icon: Shield
     },
     {
       name: 'Apis',
       subtitle: '强悍，源于底座。',
       description: '基于 Nginx 的全动态高性能网关。热更新、多协议、零信任。每一比特流量，都处理得游刃有余。',
-      color: '#0071E3', // Blue for Performance
       icon: Zap,
       href: '#/airbit-apis'
     },
@@ -23,14 +21,12 @@ export function ProductMatrix() {
       name: 'MCP Gateway',
       subtitle: '智能体，连接万物。',
       description: '业界首个企业级 MCP 网关。让 Agent 安全调用您的数据库与业务系统。',
-      color: '#AF52DE', // Purple for AI/Agent
       icon: Network
     },
     {
       name: 'Eips',
       subtitle: '集成，无所不能。',
       description: '300+ 组件，企业集成的万能胶水。解决系统「语言不通」，打破数据孤岛。',
-      color: '#34C759', // Green for Integration
       icon: Puzzle,
       href: '#/airbit-eips'
     },
@@ -38,20 +34,18 @@ export function ProductMatrix() {
       name: 'AI Gateway',
       subtitle: '统一，化繁为简。',
       description: '统一代理 OpenAI、Claude 与 Gemini。一站式管理密钥、成本，并提供企业级隐私脱敏功能。',
-      color: '#0071E3',
       icon: Bot
     },
     {
       name: 'AIO',
       subtitle: '洞察，毫秒之间。',
       description: '追踪每一个 Token 的流向，可视化全链路延迟、成本与 Prompt 版本性能。',
-      color: '#86868B',
       icon: Activity
     }
   ];
 
   return (
-    <section className="py-32 bg-[#F5F5F7]">
+    <section className="py-32 bg-[#FAFAFC] border-t border-[#F5F5F7]">
       <div className="max-w-[980px] mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -84,10 +78,9 @@ export function ProductMatrix() {
               >
                 {/* Icon Box */}
                 <div 
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300 ease-out"
-                  style={{ background: `linear-gradient(135deg, ${product.color}, ${product.color}DD)` }}
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-[#F5F5F7] group-hover:bg-[#0071E3] transition-colors duration-300 ease-out shadow-sm group-hover:shadow-md group-hover:scale-110"
                 >
-                  <Icon className="text-white w-6 h-6 stroke-[2.5px]" />
+                  <Icon className="text-[#1D1D1F] group-hover:text-white w-6 h-6 stroke-[2]" />
                 </div>
 
                 {/* Slogan / Title */}
