@@ -43,7 +43,7 @@ function Hero() {
           
           <div className="flex flex-wrap gap-3 mb-10">
             {['动态热更新', '七层全流量', 'AI 就绪', '99.999% SLA'].map((tag) => (
-              <span key={tag} className="px-3 py-1 bg-[#F5F5F7] text-[#1D1D1F] text-sm font-medium rounded-md">
+              <span key={tag} className="px-3 py-1 bg-[#FAFAFC] border border-[#E5E5EA] text-[#1D1D1F] text-sm font-medium rounded-md">
                 {tag}
               </span>
             ))}
@@ -53,7 +53,7 @@ function Hero() {
             <button className="px-8 py-3.5 rounded-full bg-[#0071E3] text-white font-medium hover:bg-[#0077ED] transition-all transform hover:scale-105 shadow-md hover:shadow-lg flex items-center justify-center gap-2">
               免费开始使用 <ArrowRight className="w-4 h-4" />
             </button>
-            <button className="px-8 py-3.5 rounded-full bg-white text-[#1D1D1F] border border-[#D2D2D7] font-medium hover:bg-gray-50 transition-all transform hover:scale-105 shadow-sm hover:shadow-md flex items-center justify-center gap-2">
+            <button className="px-8 py-3.5 rounded-full bg-white text-[#1D1D1F] border border-[#E5E5EA] font-medium hover:bg-[#FAFAFC] transition-all transform hover:scale-105 shadow-sm hover:shadow-md flex items-center justify-center gap-2">
               <FileText className="w-4 h-4" /> 查看架构白皮书
             </button>
           </div>
@@ -167,7 +167,7 @@ function FeatureSpectrum() {
   const [activeTab, setActiveTab] = useState(features[0].id);
 
   return (
-    <section className="py-24 bg-[#FAFAFA]">
+    <section className="py-24 bg-[#FAFAFC] border-t border-[#E5E5EA]">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-[#1D1D1F] mb-4">功能全景</h2>
@@ -185,15 +185,15 @@ function FeatureSpectrum() {
                 <button
                   onClick={() => setActiveTab(feature.id)}
                   className={cn(
-                    "hidden lg:flex w-full text-left p-6 rounded-2xl transition-all duration-300 group",
+                    "hidden lg:flex w-full text-left p-6 rounded-2xl transition-all duration-300 group border",
                     activeTab === feature.id 
-                      ? "bg-white shadow-lg scale-100 ring-1 ring-black/5" 
-                      : "hover:bg-white/50 hover:scale-[1.02]"
+                      ? "bg-white shadow-sm scale-100 border-[#E5E5EA]" 
+                      : "border-transparent hover:bg-white/60 hover:border-[#E5E5EA] hover:scale-[1.02]"
                   )}
                 >
                   <div className={cn(
                     "mr-4 p-3 rounded-xl transition-colors",
-                    activeTab === feature.id ? `bg-${feature.color}-50 text-${feature.color}-600` : "bg-gray-100 text-gray-500"
+                    activeTab === feature.id ? `bg-${feature.color}-50 text-${feature.color}-600` : "bg-[#FAFAFC] text-[#86868B]"
                   )}>
                     <feature.icon className="w-6 h-6" />
                   </div>
@@ -208,18 +208,18 @@ function FeatureSpectrum() {
                 </button>
 
                 {/* Mobile Accordion */}
-                <div className="lg:hidden border-b border-gray-200 last:border-0">
+                <div className="lg:hidden border-b border-[#E5E5EA] last:border-0">
                   <button
                     onClick={() => setActiveTab(activeTab === feature.id ? '' : feature.id)}
                     className="w-full flex items-center justify-between py-4 px-2"
                   >
                     <div className="flex items-center gap-3">
-                      <feature.icon className={cn("w-5 h-5", activeTab === feature.id ? "text-[#0071E3]" : "text-gray-400")} />
+                      <feature.icon className={cn("w-5 h-5", activeTab === feature.id ? "text-[#0071E3]" : "text-[#86868B]")} />
                       <span className={cn("font-semibold", activeTab === feature.id ? "text-[#1D1D1F]" : "text-[#86868B]")}>
                         {feature.title}
                       </span>
                     </div>
-                    {activeTab === feature.id ? <ChevronUp className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
+                    {activeTab === feature.id ? <ChevronUp className="w-5 h-5 text-[#86868B]" /> : <ChevronDown className="w-5 h-5 text-[#86868B]" />}
                   </button>
                   <AnimatePresence>
                     {activeTab === feature.id && (
@@ -233,7 +233,7 @@ function FeatureSpectrum() {
                            <p className="text-sm text-[#86868B] italic mb-4">{feature.desc}</p>
                            <div className="grid gap-4">
                              {feature.details.map((detail, idx) => (
-                               <div key={idx} className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                               <div key={idx} className="bg-white p-4 rounded-xl border border-[#E5E5EA] shadow-sm">
                                  <h4 className="font-medium text-[#1D1D1F] mb-1">{detail.title}</h4>
                                  <p className="text-sm text-[#86868B]">{detail.text}</p>
                                </div>
@@ -259,7 +259,7 @@ function FeatureSpectrum() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-white rounded-[32px] p-10 shadow-xl shadow-black/5 ring-1 ring-black/5 h-full"
+                    className="bg-white rounded-[32px] p-10 border border-[#E5E5EA] shadow-sm h-full"
                   >
                     <div className="flex items-center gap-4 mb-8">
                       <div className={`p-4 rounded-2xl bg-${feature.color}-50 text-${feature.color}-600`}>
@@ -274,7 +274,7 @@ function FeatureSpectrum() {
                     <div className="grid grid-cols-2 gap-6">
                       {feature.details.map((detail, idx) => (
                         <div key={idx} className={cn(
-                          "p-6 rounded-2xl bg-[#F5F5F7] hover:bg-white hover:shadow-md transition-all duration-300",
+                          "p-6 rounded-2xl bg-[#FAFAFC] border border-transparent hover:border-[#E5E5EA] hover:bg-white transition-all duration-300",
                           idx === 2 ? "col-span-2" : ""
                         )}>
                           <div className="flex items-start gap-3">
@@ -336,7 +336,7 @@ function AIGatewaySpotlight() {
             </div>
             <div className="flex gap-4">
               <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
-                <Shield className="w-6 h-6 text-blue-500" />
+                <Shield className="w-6 h-6 text-[#0071E3]" />
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Prompt 安全与管理</h3>
@@ -348,34 +348,34 @@ function AIGatewaySpotlight() {
 
         {/* Code Snippet */}
         <div className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-          <div className="relative rounded-xl border border-white/10 p-6 shadow-2xl bg-[#ffffff]">
-            <div className="flex items-center gap-2 mb-4 border-b border-white/5 pb-4">
+          <div className="absolute -inset-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+          <div className="relative rounded-xl border border-[#E5E5EA] p-6 shadow-xl bg-white">
+            <div className="flex items-center gap-2 mb-4 border-b border-[#E5E5EA] pb-4">
               <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
+                <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
+                <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
               </div>
-              <span className="text-xs text-gray-400 font-mono ml-2">config.yaml</span>
+              <span className="text-xs text-[#86868B] font-mono ml-2">config.yaml</span>
             </div>
-            <pre className="font-mono text-sm leading-relaxed overflow-x-auto text-white">
+            <pre className="font-mono text-sm leading-relaxed overflow-x-auto text-[#1D1D1F]">
               <code className="block">
-                <span className="text-purple-400">ai_proxy:</span>{'\n'}
-                <span className="text-gray-500">  # 统一模型路由配置</span>{'\n'}
-                <span className="text-blue-400">  providers:</span>{'\n'}
-                <span className="text-gray-400">    - name: openai</span>{'\n'}
-                <span className="text-gray-400">      model: gpt-4</span>{'\n'}
-                <span className="text-gray-400">      weight: 80</span>{'\n'}
-                <span className="text-gray-400">    - name: anthropic</span>{'\n'}
-                <span className="text-gray-400">      model: claude-3-opus</span>{'\n'}
-                <span className="text-gray-400">      weight: 20</span>{'\n'}
+                <span className="text-purple-600">ai_proxy:</span>{'\n'}
+                <span className="text-[#86868B]">  # 统一模型路由配置</span>{'\n'}
+                <span className="text-[#0071E3]">  providers:</span>{'\n'}
+                <span className="text-[#1D1D1F]">    - name: openai</span>{'\n'}
+                <span className="text-[#1D1D1F]">      model: gpt-4</span>{'\n'}
+                <span className="text-[#1D1D1F]">      weight: 80</span>{'\n'}
+                <span className="text-[#1D1D1F]">    - name: anthropic</span>{'\n'}
+                <span className="text-[#1D1D1F]">      model: claude-3-opus</span>{'\n'}
+                <span className="text-[#1D1D1F]">      weight: 20</span>{'\n'}
                 {'\n'}
-                <span className="text-purple-400">  governance:</span>{'\n'}
-                <span className="text-blue-400">    rate_limit:</span>{'\n'}
-                <span className="text-gray-400">      by: token_count</span>{'\n'}
-                <span className="text-gray-400">      limit: 100000/day</span>{'\n'}
-                <span className="text-blue-400">    security:</span>{'\n'}
-                <span className="text-gray-400">      detect_pii: true</span>
+                <span className="text-purple-600">  governance:</span>{'\n'}
+                <span className="text-[#0071E3]">    rate_limit:</span>{'\n'}
+                <span className="text-[#1D1D1F]">      by: token_count</span>{'\n'}
+                <span className="text-[#1D1D1F]">      limit: 100000/day</span>{'\n'}
+                <span className="text-[#0071E3]">    security:</span>{'\n'}
+                <span className="text-[#1D1D1F]">      detect_pii: true</span>
               </code>
             </pre>
           </div>
@@ -387,7 +387,7 @@ function AIGatewaySpotlight() {
 
 function Architecture() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-[#FAFAFC] border-t border-[#E5E5EA]">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-3xl font-bold text-[#1D1D1F] mb-4">坚若磐石的云原生架构</h2>
@@ -395,42 +395,11 @@ function Architecture() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Architecture Diagram (Simplified Visualization) */}
-          <div className="relative bg-[#F5F5F7] rounded-[40px] p-8 lg:p-12">
-            <div className="flex flex-col gap-6">
-              {/* Control Plane */}
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-black/5 text-center relative">
-                 <div className="text-xs font-bold text-gray-400 uppercase mb-2 tracking-wider">Control Plane</div>
-                 <div className="font-bold text-[#1D1D1F] text-lg flex items-center justify-center gap-2">
-                   <Server className="w-5 h-5 text-blue-500" /> etcd Cluster
-                 </div>
-                 <p className="text-xs text-gray-500 mt-2">配置中心 & 元数据存储</p>
-                 
-                 {/* Connection Lines */}
-                 <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-0.5 h-6 bg-gray-300 border-l border-dashed border-gray-400"></div>
-              </div>
-
-              {/* Data Plane */}
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-black/5 text-center mt-2 relative overflow-hidden group">
-                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-teal-500"></div>
-                 <div className="text-xs font-bold text-gray-400 uppercase mb-2 tracking-wider">Data Plane</div>
-                 <div className="font-bold text-[#1D1D1F] text-lg flex items-center justify-center gap-2 mb-4">
-                   <Zap className="w-5 h-5 text-yellow-500" /> Nginx + LuaJIT
-                 </div>
-                 <div className="grid grid-cols-3 gap-2 text-xs">
-                   <div className="bg-gray-50 p-2 rounded">Plugin Runner</div>
-                   <div className="bg-gray-50 p-2 rounded">Load Balancer</div>
-                   <div className="bg-gray-50 p-2 rounded">WAF Engine</div>
-                 </div>
-              </div>
-            </div>
-          </div>
-
           {/* Polyglot & Service Discovery */}
           <div className="space-y-12">
             <div>
-              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-6">
-                <Code className="w-6 h-6 text-blue-600" />
+              <div className="w-12 h-12 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center mb-6">
+                <Code className="w-6 h-6 text-[#0071E3]" />
               </div>
               <h3 className="text-2xl font-bold text-[#1D1D1F] mb-4">打破语言壁垒的插件开发</h3>
               <p className="text-[#86868B] leading-relaxed mb-6">
@@ -438,7 +407,7 @@ function Architecture() {
               </p>
               <div className="flex flex-wrap gap-2">
                 {['Lua', 'Java', 'Go', 'Python', 'Rust', 'Wasm'].map(lang => (
-                  <span key={lang} className="px-3 py-1 bg-gray-100 text-gray-600 text-sm font-medium rounded-lg">
+                  <span key={lang} className="px-3 py-1 bg-white border border-[#E5E5EA] text-[#86868B] text-sm font-medium rounded-lg">
                     {lang}
                   </span>
                 ))}
@@ -446,13 +415,44 @@ function Architecture() {
             </div>
 
             <div>
-               <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-6">
+               <div className="w-12 h-12 rounded-full bg-green-50 border border-green-100 flex items-center justify-center mb-6">
                 <Globe className="w-6 h-6 text-green-600" />
               </div>
               <h3 className="text-2xl font-bold text-[#1D1D1F] mb-4">无处不在的服务发现</h3>
               <p className="text-[#86868B] leading-relaxed">
                 自动感知后端服务变化，开箱支持 Nacos, Eureka, Consul, DNS, ZooKeeper 及 Kubernetes (K8s)。
               </p>
+            </div>
+          </div>
+
+          {/* Architecture Diagram (Simplified Visualization) */}
+          <div className="relative bg-white border border-[#E5E5EA] shadow-sm rounded-[40px] p-8 lg:p-12">
+            <div className="flex flex-col gap-6">
+              {/* Control Plane */}
+              <div className="bg-[#FAFAFC] p-6 rounded-2xl border border-[#E5E5EA] text-center relative">
+                 <div className="text-xs font-bold text-[#86868B] uppercase mb-2 tracking-wider">Control Plane</div>
+                 <div className="font-bold text-[#1D1D1F] text-lg flex items-center justify-center gap-2">
+                   <Server className="w-5 h-5 text-[#0071E3]" /> etcd Cluster
+                 </div>
+                 <p className="text-xs text-[#86868B] mt-2">配置中心 & 元数据存储</p>
+                 
+                 {/* Connection Lines */}
+                 <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-0.5 h-6 bg-[#E5E5EA] border-l border-dashed border-[#E5E5EA]"></div>
+              </div>
+
+              {/* Data Plane */}
+              <div className="bg-[#FAFAFC] p-6 rounded-2xl border border-[#E5E5EA] text-center mt-2 relative overflow-hidden group">
+                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0071E3] to-[#00C7BE]"></div>
+                 <div className="text-xs font-bold text-[#86868B] uppercase mb-2 tracking-wider">Data Plane</div>
+                 <div className="font-bold text-[#1D1D1F] text-lg flex items-center justify-center gap-2 mb-4">
+                   <Zap className="w-5 h-5 text-yellow-500" /> Nginx + LuaJIT
+                 </div>
+                 <div className="grid grid-cols-3 gap-2 text-xs">
+                   <div className="bg-white border border-[#E5E5EA] p-2 rounded text-[#86868B]">Plugin Runner</div>
+                   <div className="bg-white border border-[#E5E5EA] p-2 rounded text-[#86868B]">Load Balancer</div>
+                   <div className="bg-white border border-[#E5E5EA] p-2 rounded text-[#86868B]">WAF Engine</div>
+                 </div>
+              </div>
             </div>
           </div>
         </div>
@@ -463,17 +463,17 @@ function Architecture() {
 
 function CTA() {
   return (
-    <section className="py-24 bg-[#FAFAFA] border-t border-black/5">
+    <section className="py-24 bg-white border-t border-[#E5E5EA]">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold text-[#1D1D1F] mb-6">准备好升级您的 API 架构了吗？</h2>
         <p className="text-xl text-[#86868B] mb-10">
           加入全球领先企业的行列，让 AI 与微服务治理更简单。
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="px-8 py-4 rounded-full bg-[#1D1D1F] text-white font-medium hover:bg-black transition-all shadow-lg hover:shadow-xl w-full sm:w-auto">
+          <button className="px-8 py-4 rounded-full bg-[#0071E3] text-white font-medium hover:bg-[#0077ED] transition-all shadow-md hover:shadow-lg w-full sm:w-auto">
             立即开始免费使用
           </button>
-          <button className="px-8 py-4 rounded-full bg-white text-[#1D1D1F] border border-[#D2D2D7] font-medium hover:bg-gray-50 transition-all shadow-sm hover:shadow-md w-full sm:w-auto">
+          <button className="px-8 py-4 rounded-full bg-white text-[#1D1D1F] border border-[#E5E5EA] font-medium hover:bg-[#FAFAFC] transition-all shadow-sm hover:shadow-md w-full sm:w-auto">
             联系销售团队
           </button>
         </div>
@@ -497,8 +497,8 @@ export function AirBitApisPage() {
       <CTA />
       
       {/* Mobile Sticky CTA */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 z-50 flex items-center justify-between gap-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
-        <button className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 text-[#1D1D1F] font-medium rounded-lg text-sm">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-[#E5E5EA] p-4 z-50 flex items-center justify-between gap-4 shadow-[0_-4px_20px_-1px_rgba(0,0,0,0.05)]">
+        <button className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#FAFAFC] border border-[#E5E5EA] text-[#1D1D1F] font-medium rounded-lg text-sm">
           <Star className="w-4 h-4" /> Star on GitHub
         </button>
         <button className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#0071E3] text-white font-medium rounded-lg text-sm">
