@@ -636,10 +636,25 @@ function CTA() {
 }
 
 export function AirBitGuardrailsPage() {
-  useSEO({ 
-    title: 'AirBit Guardrails | 可编程安全护栏', 
+  useSEO({
+    title: 'AirBit Guardrails | 可编程安全护栏',
     description: '基于特定策略对 AI 对话的输入和输出进行检测、拦截与重写的可编程安全防护系统，保障企业 AI 应用合规落地。',
-    path: '/airbit-guardrails'
+    path: '/airbit-guardrails',
+    keywords: 'AirBit Guardrails, AI 安全护栏, 大模型安全, AI 合规, 数据脱敏, 企业 AI 安全',
+    image: '/og-airbit.png',
+    jsonLd: [
+      { '@context': 'https://schema.org', '@type': 'WebPage', name: 'AirBit Guardrails', description: '可编程 AI 安全护栏，对 AI 输入输出进行检测、拦截与脱敏，保障企业数据安全。', url: 'https://www.tlin.cn/airbit-guardrails' },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首页', item: 'https://www.tlin.cn/' },
+        { '@type': 'ListItem', position: 2, name: '产品', item: 'https://www.tlin.cn/' },
+        { '@type': 'ListItem', position: 3, name: 'AirBit Guardrails', item: 'https://www.tlin.cn/airbit-guardrails' },
+      ]},
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+        { '@type': 'Question', name: 'AirBit Guardrails 能防止哪些数据泄露风险？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit Guardrails 可自动识别并脱敏配方参数、供应商报价、客户数据、员工信息等敏感内容，防止这些数据被传输至外部模型。' } },
+        { '@type': 'Question', name: 'Guardrails 如何实现数据权限隔离？', acceptedAnswer: { '@type': 'Answer', text: '基于用户角色和部门权限，Guardrails 确保每个用户只能查询和访问其权限范围内的数据，不同部门的数据相互隔离。' } },
+        { '@type': 'Question', name: '使用 Guardrails 会影响 AI 响应速度吗？', acceptedAnswer: { '@type': 'Answer', text: 'Guardrails 采用高性能流式处理架构，对响应延迟影响极小（通常低于 10ms），不影响正常业务使用体验。' } },
+      ]},
+    ],
   });
   return (
     <div className="min-h-screen bg-white pb-20 lg:pb-0">

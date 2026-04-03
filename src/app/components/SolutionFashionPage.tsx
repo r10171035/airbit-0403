@@ -781,7 +781,7 @@ export function SolutionFashionPage() {
     description: 'AirBit 为鞋服企业提供商品企划、供应链、库存、门店运营和会员增长的 AI 解决方案，帮助品牌在安全可控的前提下提效增收。',
     path: '/solution-fashion',
     keywords: '鞋服行业 AI 解决方案, 服装行业 AI, 鞋服供应链 AI, 门店运营 AI, 会员增长 AI, AirBit',
-    image: '/og-airbit.svg',
+    image: '/og-airbit.png',
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -795,10 +795,15 @@ export function SolutionFashionPage() {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: '首页', item: 'https://www.tlin.cn/' },
-          { '@type': 'ListItem', position: 2, name: '市场', item: 'https://www.tlin.cn/' },
+          { '@type': 'ListItem', position: 2, name: '方案', item: 'https://www.tlin.cn/' },
           { '@type': 'ListItem', position: 3, name: '鞋服行业', item: 'https://www.tlin.cn/solution-fashion' },
         ],
       },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+        { '@type': 'Question', name: 'AirBit 如何帮助鞋服企业做商品企划？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit 让商品总监用自然语言查询 PLM、POS、OMS 等系统，30 秒获取历史销定数据、尺码配比分析和区域铺货建议，替代手工跨系统汇总。' } },
+        { '@type': 'Question', name: '鞋服企业用 AirBit 需要改造现有系统吗？', acceptedAnswer: { '@type': 'Answer', text: '不需要。AirBit MCP Gateway 通过协议桥接将现有 SAP、ERP、OMS、WMS、POS 等系统暴露为 AI 可调用接口，前端零改造。' } },
+        { '@type': 'Question', name: 'AirBit 如何保障鞋服企业的数据安全？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit 支持私有化部署，供应商报价和会员数据通过 Guardrails 自动脱敏，按区域和角色进行权限隔离，全量审计日志可查。' } },
+      ]},
     ],
   });
 

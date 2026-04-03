@@ -781,7 +781,7 @@ export function SolutionFoodPage() {
     description: 'AirBit 为食品企业提供批次追溯、冷链监控、质量管控、合规审计和经营分析的 AI 解决方案，帮助企业在安全可控前提下提升效率。',
     path: '/solution-food',
     keywords: '食品行业 AI 解决方案, 食品安全 AI, 冷链 AI, 质量追溯 AI, 食品供应链 AI, AirBit',
-    image: '/og-airbit.svg',
+    image: '/og-airbit.png',
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -795,10 +795,15 @@ export function SolutionFoodPage() {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: '首页', item: 'https://www.tlin.cn/' },
-          { '@type': 'ListItem', position: 2, name: '市场', item: 'https://www.tlin.cn/' },
+          { '@type': 'ListItem', position: 2, name: '方案', item: 'https://www.tlin.cn/' },
           { '@type': 'ListItem', position: 3, name: '食品行业', item: 'https://www.tlin.cn/solution-food' },
         ],
       },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+        { '@type': 'Question', name: 'AirBit 如何实现食品批次追溯？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit 通过 MCP Gateway 同时调用 MES、WMS、QMS、LIMS、SCM 和 OMS，一个批次号 30 秒内串联从原料来源到流向去向的全链路，替代人工跨系统拼接花两天的方式。' } },
+        { '@type': 'Question', name: 'AirBit 如何帮助食品企业应对合规审计？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit 可按审计清单自动汇总 GRC、QMS、MES、DMS 中的合规记录，将 ISO 22000、HACCP 审计资料准备时间从一周缩短到一天。' } },
+        { '@type': 'Question', name: '食品企业的配方数据使用 AirBit 安全吗？', acceptedAnswer: { '@type': 'Answer', text: '安全。AirBit 支持私有化部署，Guardrails 自动识别并脱敏配方参数和供应商来价，这些数据不会发送给任何外部模型。' } },
+      ]},
     ],
   });
 

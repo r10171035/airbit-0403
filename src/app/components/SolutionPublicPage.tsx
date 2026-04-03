@@ -793,7 +793,7 @@ export function SolutionPublicPage() {
     description: 'AirBit 为事业单位提供公文审批、预算管理、人事编制、资产管理和内控审计的 AI 解决方案，帮助机构在安全可控前提下提升效率。',
     path: '/solution-public',
     keywords: '事业单位 AI 解决方案, 政务办公 AI, 公文审批 AI, 预算管理 AI, 内控审计 AI, AirBit',
-    image: '/og-airbit.svg',
+    image: '/og-airbit.png',
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -807,10 +807,15 @@ export function SolutionPublicPage() {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: '首页', item: 'https://www.tlin.cn/' },
-          { '@type': 'ListItem', position: 2, name: '市场', item: 'https://www.tlin.cn/' },
+          { '@type': 'ListItem', position: 2, name: '方案', item: 'https://www.tlin.cn/' },
           { '@type': 'ListItem', position: 3, name: '事业单位', item: 'https://www.tlin.cn/solution-public' },
         ],
       },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+        { '@type': 'Question', name: 'AirBit 如何帮助事业单位提升审批效率？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit 让分管领导用自然语言查询待审批事项并执行审批，AI 自动调用 OA 系统完成审批流程，将审批效率提升 80%，减少人工登录系统查找的繁琐步骤。' } },
+        { '@type': 'Question', name: '事业单位的公文和数据使用 AirBit 安全吗？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit 支持私有化部署，所有数据不出局。Guardrails 实现数据权限隔离，敏感公文和财务数据不会发送给任何外部模型，满足党政机关数据安全要求。' } },
+        { '@type': 'Question', name: 'AirBit 能帮助事业单位对接哪些系统？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit 可对接 OA 审批系统、财务系统、人事编制系统、资产管理系统、项目管理系统等 20+ 套事业单位常用系统，前端零改造。' } },
+      ]},
     ],
   });
 

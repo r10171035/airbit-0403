@@ -1,28 +1,64 @@
 # AirBit
 
-> AirBit is an enterprise AI infrastructure platform for AI gateway, MCP gateway, guardrails, integration, and industry solutions.
+> AirBit is an enterprise AI infrastructure platform that helps companies safely and efficiently deploy AI applications. It provides a unified layer for multi-model routing, enterprise system integration, data security, and AI observability — without requiring changes to existing backend systems.
 
-## Canonical site
-- https://www.tlin.cn/
+Canonical site: https://www.tlin.cn/
 
-## Core pages
-- Home: https://www.tlin.cn/
-- AirBit Portal: https://www.tlin.cn/airbit-portal
-- AirBit AI Gateway: https://www.tlin.cn/airbit-ai-gateway
-- AirBit MCP Gateway: https://www.tlin.cn/airbit-mcp-gateway
-- AirBit Guardrails: https://www.tlin.cn/airbit-guardrails
-- AirBit APIs: https://www.tlin.cn/airbit-apis
-- AirBit EIPs: https://www.tlin.cn/airbit-eips
-- AirBit AIO: https://www.tlin.cn/airbit-aio
+## Products
 
-## Industry solutions
-- Manufacturing: https://www.tlin.cn/solution-manufacturing
-- Fashion: https://www.tlin.cn/solution-fashion
-- Food: https://www.tlin.cn/solution-food
-- Education: https://www.tlin.cn/solution-education
-- Public sector: https://www.tlin.cn/solution-public
+### AirBit Portal
+URL: https://www.tlin.cn/airbit-portal
+Summary: The natural language interface for business users. Employees across departments (finance, HR, operations, supply chain) can query 20+ enterprise systems using plain Chinese or English — getting instant answers without logging into individual systems. Not just a chatbot, but an AI assistant that can actually execute business operations.
+
+### AirBit AI Gateway
+URL: https://www.tlin.cn/airbit-ai-gateway
+Summary: Enterprise-grade large language model gateway. Normalizes GPT, Claude, DeepSeek, Hunyuan, Qianwen and other models into a unified OpenAI-compatible format. Provides intelligent routing, rate limiting, failover, semantic caching (30–50% cost reduction), and unified security controls. Token cost attribution by department, application, and user.
+
+### AirBit MCP Gateway
+URL: https://www.tlin.cn/airbit-mcp-gateway
+Summary: Model Context Protocol (MCP) governance gateway. Enables AI agents to securely call enterprise systems (ERP, CRM, MES, OA, databases) through standardized tool protocols. Supports multi-backend routing, protocol bridging, and unified authentication — zero frontend changes required to existing systems.
+
+### AirBit Guardrails
+URL: https://www.tlin.cn/airbit-guardrails
+Summary: Programmable AI safety and compliance engine. Detects, intercepts, and rewrites sensitive content in AI inputs and outputs. Automatically desensitizes formulas, supplier pricing, customer data, and employee information before sending to models. Role-based data permission isolation ensures users only access data within their scope.
+
+### AirBit APIs
+URL: https://www.tlin.cn/airbit-apis
+Summary: Cloud-native high-performance API gateway. Manages all traffic entering the enterprise with identity authentication, load balancing, rate limiting, circuit breaking, and unified governance. Designed for the AI era, with deep integration with AI Gateway and MCP Gateway.
+
+### AirBit EIPs
+URL: https://www.tlin.cn/airbit-eips
+Summary: Enterprise Integration Patterns framework with 300+ pre-built connectors. Enables automated workflows between enterprise systems — no-code drag-and-drop interface for business users. Built-in retry, dead-letter queue, and idempotency controls ensure reliable data integration.
+
+### AirBit AIO
+URL: https://www.tlin.cn/airbit-aio
+Summary: Full-stack AI observability platform. Provides end-to-end monitoring from traditional microservices to LLM applications. Token cost attribution, AI response quality evaluation, and complete audit logs — answers the CFO's question: "How much did AI cost us, and did it deliver value?"
+
+## Industry Solutions
+
+### Manufacturing
+URL: https://www.tlin.cn/solution-manufacturing
+Summary: Connects 25+ manufacturing systems (MES, WMS, QMS, LIMS, ERP, SCADA) via natural language. Key use cases: 30-second batch quality traceability (vs. 1 day manually), predictive equipment maintenance, production scheduling queries, supply chain coordination, and safety compliance. Zero IP leakage — process parameters and BOM data never leave the factory.
+
+### Fashion & Apparel
+URL: https://www.tlin.cn/solution-fashion
+Summary: Connects PLM, OMS, WMS, POS, CRM, CDP and 20+ systems for fashion brands. Key use cases: merchandise planning with sales data, inventory allocation across channels, store performance analysis, VIP member retention, and omnichannel order management. Data security for supplier pricing and member profiles.
+
+### Food Industry
+URL: https://www.tlin.cn/solution-food
+Summary: Connects 22+ food industry systems for batch traceability, cold chain monitoring, quality control, and regulatory compliance. Key use cases: 30-second full-chain batch traceability (MES+WMS+QMS+LIMS+SCM+OMS), cold chain temperature alerts, ISO 22000/HACCP audit preparation (1 week → 1 day), and expired inventory management. Formula and supplier data fully protected.
+
+### Education
+URL: https://www.tlin.cn/solution-education
+Summary: Connects 25+ university systems (academic affairs, student services, research, finance, HR) for higher education institutions. Key use cases: 80% of repetitive inquiries answered by AI, title review process (3 days → 30 minutes), cross-system student queries, and research project management. All data stays on campus.
+
+### Public Sector
+URL: https://www.tlin.cn/solution-public
+Summary: Connects 20+ government and public institution systems (OA, finance, HR, asset management). Key use cases: 80% improvement in approval efficiency, document retrieval and policy queries, budget management, and audit preparation (1 week → 1 day). Strict data security — all data stays within the institution.
 
 ## Company
-- Company: https://www.tlin.cn/company
-- Partner: https://www.tlin.cn/partner
-- Contact: https://www.tlin.cn/contact
+
+- About AirBit: https://www.tlin.cn/company
+- Partner Program: https://www.tlin.cn/partner
+- Contact Sales: https://www.tlin.cn/contact
+- Pricing: https://www.tlin.cn/pricing

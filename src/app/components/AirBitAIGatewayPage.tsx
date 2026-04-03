@@ -544,10 +544,25 @@ function CTA() {
 }
 
 export function AirBitAIGatewayPage() {
-  useSEO({ 
-    title: 'AirBit AI Gateway | 企业级智能流量管家', 
+  useSEO({
+    title: 'AirBit AI Gateway | 企业级智能流量管家',
     description: '将不同厂商的 AI 模型标准化为 OpenAI 格式，提供路由、限流、容灾及统一安全管控的企业级大模型网关。',
-    path: '/airbit-ai-gateway'
+    path: '/airbit-ai-gateway',
+    keywords: 'AirBit AI Gateway, 大模型网关, AI 路由, 多模型调度, OpenAI 兼容, 企业 AI 基础设施',
+    image: '/og-airbit.png',
+    jsonLd: [
+      { '@context': 'https://schema.org', '@type': 'WebPage', name: 'AirBit AI Gateway', description: '企业级大模型统一网关，支持多模型路由、限流、容灾与安全管控。', url: 'https://www.tlin.cn/airbit-ai-gateway' },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首页', item: 'https://www.tlin.cn/' },
+        { '@type': 'ListItem', position: 2, name: '产品', item: 'https://www.tlin.cn/' },
+        { '@type': 'ListItem', position: 3, name: 'AirBit AI Gateway', item: 'https://www.tlin.cn/airbit-ai-gateway' },
+      ]},
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+        { '@type': 'Question', name: 'AirBit AI Gateway 是什么？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit AI Gateway 是企业级大模型统一网关，将 GPT、Claude、DeepSeek、混元等不同厂商模型标准化为 OpenAI 格式，提供统一路由、限流、容灾和安全管控。' } },
+        { '@type': 'Question', name: 'AirBit AI Gateway 支持哪些模型？', acceptedAnswer: { '@type': 'Answer', text: '支持 OpenAI GPT 系列、Anthropic Claude、DeepSeek、混元、通义千问等主流大模型，并兼容所有 OpenAI 格式接口。' } },
+        { '@type': 'Question', name: '企业为什么需要 AI Gateway？', acceptedAnswer: { '@type': 'Answer', text: '企业需要统一管控多个 AI 模型的调用成本、访问权限和安全合规，AI Gateway 提供语义缓存、模型降级、Token 成本归因和全量审计日志。' } },
+      ]},
+    ],
   });
   return (
     <div className="bg-white min-h-screen">

@@ -568,10 +568,25 @@ function CTA() {
 }
 
 export function AirBitApisPage() {
-  useSEO({ 
-    title: 'AirBit APIs | 云原生动态网关', 
+  useSEO({
+    title: 'AirBit APIs | 云原生动态网关',
     description: '接管进入企业所有流量的高性能 API 网关，提供身份认证、负载均衡、限流熔断等核心治理能力。',
-    path: '/airbit-apis'
+    path: '/airbit-apis',
+    keywords: 'AirBit APIs, API 网关, 云原生网关, 限流熔断, API 治理, 企业 API 管理',
+    image: '/og-airbit.png',
+    jsonLd: [
+      { '@context': 'https://schema.org', '@type': 'WebPage', name: 'AirBit APIs', description: '云原生高性能 API 网关，提供身份认证、负载均衡、限流熔断等企业级治理能力。', url: 'https://www.tlin.cn/airbit-apis' },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首页', item: 'https://www.tlin.cn/' },
+        { '@type': 'ListItem', position: 2, name: '产品', item: 'https://www.tlin.cn/' },
+        { '@type': 'ListItem', position: 3, name: 'AirBit APIs', item: 'https://www.tlin.cn/airbit-apis' },
+      ]},
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+        { '@type': 'Question', name: 'AirBit APIs 和传统 API 网关有什么区别？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit APIs 是为 AI 时代设计的云原生 API 网关，在传统 API 治理基础上深度集成 AI 流量管理能力，支持与 AI Gateway、MCP Gateway 协同工作。' } },
+        { '@type': 'Question', name: 'AirBit APIs 支持哪些认证方式？', acceptedAnswer: { '@type': 'Answer', text: '支持 API Key、JWT、OAuth 2.0、mTLS 等多种认证方式，可按路由、服务或用户粒度配置不同认证策略。' } },
+        { '@type': 'Question', name: 'AirBit APIs 如何保障高可用？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit APIs 内置健康检查、自动熔断、故障转移和多实例负载均衡，支持 99.99% 可用性 SLA。' } },
+      ]},
+    ],
   });
   return (
     <div className="bg-white min-h-screen">

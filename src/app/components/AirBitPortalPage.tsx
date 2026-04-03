@@ -362,7 +362,7 @@ export function AirBitPortalPage() {
     description: '告别玩具式大模型对话。AirBit Portal 基于全栈 AI 基础设施，为企业打造安全、受控、直连业务的超级智能体交互中心。',
     path: '/airbit-portal',
     keywords: 'AirBit Portal, AI 企业门户, 企业级 AI, 智能体门户, AI 安全护栏, 企业 AI 落地',
-    image: '/og-airbit.svg',
+    image: '/og-airbit.png',
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',

@@ -780,7 +780,7 @@ export function SolutionEducationPage() {
     description: 'AirBit 为高校和中学提供教务管理、学生事务、科研管理、财务预算和校务决策的 AI 解决方案，帮助学校在安全可控的前提下提效。',
     path: '/solution-education',
     keywords: '教育行业 AI 解决方案, 高校 AI, 教务 AI, 科研管理 AI, 校务分析 AI, AirBit',
-    image: '/og-airbit.svg',
+    image: '/og-airbit.png',
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -794,10 +794,15 @@ export function SolutionEducationPage() {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: '首页', item: 'https://www.tlin.cn/' },
-          { '@type': 'ListItem', position: 2, name: '市场', item: 'https://www.tlin.cn/' },
+          { '@type': 'ListItem', position: 2, name: '方案', item: 'https://www.tlin.cn/' },
           { '@type': 'ListItem', position: 3, name: '教育行业', item: 'https://www.tlin.cn/solution-education' },
         ],
       },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+        { '@type': 'Question', name: 'AirBit 如何帮助高校减少重复性事务咨询？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit Portal 让师生用自然语言查询教务、学籍、财务等信息，AI 自动从 22+ 套系统中提取准确答案，将 80% 的重复性咨询转为 AI 自动应答，释放行政人员精力。' } },
+        { '@type': 'Question', name: '高校学生数据使用 AirBit 是否合规？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit 支持私有化部署，所有数据不出校园。Guardrails 实现数据权限隔离，学生只能查询自己的数据，辅导员只能查询本院系数据，满足教育数据安全合规要求。' } },
+        { '@type': 'Question', name: 'AirBit 能帮助高校对接哪些系统？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit 可对接教务系统、学工系统、财务系统、科研管理系统、人事系统、资产系统等 25+ 套高校常用系统，前端零改造。' } },
+      ]},
     ],
   });
 

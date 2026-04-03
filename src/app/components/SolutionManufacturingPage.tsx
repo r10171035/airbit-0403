@@ -783,7 +783,7 @@ export function SolutionManufacturingPage() {
     description: 'AirBit 为制造企业提供生产排程、质量追溯、设备维护、供应链与经营分析的 AI 解决方案，帮助工厂在安全可控的前提下提升效率。',
     path: '/solution-manufacturing',
     keywords: '制造业 AI 解决方案, 工业 AI, 工厂 AI, 生产排程 AI, 质量追溯 AI, AirBit',
-    image: '/og-airbit.svg',
+    image: '/og-airbit.png',
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -797,10 +797,15 @@ export function SolutionManufacturingPage() {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: '首页', item: 'https://www.tlin.cn/' },
-          { '@type': 'ListItem', position: 2, name: '市场', item: 'https://www.tlin.cn/' },
+          { '@type': 'ListItem', position: 2, name: '方案', item: 'https://www.tlin.cn/' },
           { '@type': 'ListItem', position: 3, name: '制造业', item: 'https://www.tlin.cn/solution-manufacturing' },
         ],
       },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+        { '@type': 'Question', name: 'AirBit 如何帮助制造企业实现质量追溯？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit 通过 MCP Gateway 同时调用 MES、QMS、LIMS、SCM 和 WMS，一个批次号 30 秒内完成从原料到成品的全链路追溯，替代人工跨系统拼接花一天的方式。' } },
+        { '@type': 'Question', name: '制造企业的工艺参数使用 AirBit 安全吗？', acceptedAnswer: { '@type': 'Answer', text: '安全。AirBit 支持私有化部署，Guardrails 自动识别并保护工艺参数、BOM 和客户报价等核心数据，这些数据不会发送给任何外部模型，实现零数据泄露风险。' } },
+        { '@type': 'Question', name: 'AirBit 能帮助制造企业对接哪些系统？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit 可对接 MES、WMS、QMS、LIMS、ERP、SCADA、SCM、SRM 等 25+ 套制造业常用系统，通过 MCP Gateway 协议桥接，前端零改造。' } },
+      ]},
     ],
   });
 

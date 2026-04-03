@@ -14,7 +14,7 @@ export function useSEO({ title, description, path, keywords, image, jsonLd }: SE
     const baseUrl = import.meta.env.VITE_SITE_URL || 'https://www.tlin.cn';
     const normalizedImage = image
       ? (image.startsWith('http') ? image : `${baseUrl}${image}`)
-      : `${baseUrl}/og-airbit.svg`;
+      : `${baseUrl}/og-airbit.png`;
 
     document.title = title;
 

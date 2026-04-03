@@ -740,10 +740,25 @@ function CTA() {
 }
 
 export function AirBitMCPGatewayPage() {
-  useSEO({ 
-    title: 'AirBit MCP Gateway | 智能体治理网关', 
+  useSEO({
+    title: 'AirBit MCP Gateway | 智能体治理网关',
     description: '为模型提供规范化的外部工具调用能力，支持多后端路由、协议桥接及统一鉴权的模型上下文协议(MCP)治理网关。',
-    path: '/airbit-mcp-gateway'
+    path: '/airbit-mcp-gateway',
+    keywords: 'AirBit MCP Gateway, MCP 网关, 智能体工具调用, 模型上下文协议, 企业 AI 集成',
+    image: '/og-airbit.png',
+    jsonLd: [
+      { '@context': 'https://schema.org', '@type': 'WebPage', name: 'AirBit MCP Gateway', description: '智能体治理网关，为 AI 模型提供规范化外部工具调用能力，支持协议桥接与统一鉴权。', url: 'https://www.tlin.cn/airbit-mcp-gateway' },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首页', item: 'https://www.tlin.cn/' },
+        { '@type': 'ListItem', position: 2, name: '产品', item: 'https://www.tlin.cn/' },
+        { '@type': 'ListItem', position: 3, name: 'AirBit MCP Gateway', item: 'https://www.tlin.cn/airbit-mcp-gateway' },
+      ]},
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+        { '@type': 'Question', name: 'AirBit MCP Gateway 是什么？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit MCP Gateway 是企业级 MCP（模型上下文协议）治理网关，让 AI 智能体通过标准化协议安全调用企业内部系统和外部工具，支持多后端路由、协议桥接和统一鉴权。' } },
+        { '@type': 'Question', name: 'MCP Gateway 和 AI Gateway 有什么区别？', acceptedAnswer: { '@type': 'Answer', text: 'AI Gateway 管理模型调用流量（选择用哪个模型），MCP Gateway 管理模型的工具调用（让模型能调用企业系统），两者协同工作。' } },
+        { '@type': 'Question', name: 'MCP Gateway 支持哪些企业系统接入？', acceptedAnswer: { '@type': 'Answer', text: '支持通过 REST API、数据库、消息队列等协议桥接接入 ERP、CRM、OA、MES 等企业系统，前端零改造。' } },
+      ]},
+    ],
   });
   return (
     <div className="bg-white min-h-screen">

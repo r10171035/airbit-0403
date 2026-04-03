@@ -596,10 +596,25 @@ function SpecsAndCTA() {
 }
 
 export function AirBitEipsPage() {
-  useSEO({ 
-    title: 'AirBit EIPs | 企业集成框架', 
+  useSEO({
+    title: 'AirBit EIPs | 企业集成框架',
     description: '内置 300+ 现成连接组件的企业应用集成框架，加速构建统一、高效的数据互通网络，彻底打通企业信息孤岛。',
-    path: '/airbit-eips'
+    path: '/airbit-eips',
+    keywords: 'AirBit EIPs, 企业集成框架, 系统集成, 数据互通, 自动化流程, 信息孤岛',
+    image: '/og-airbit.png',
+    jsonLd: [
+      { '@context': 'https://schema.org', '@type': 'WebPage', name: 'AirBit EIPs', description: '企业应用集成框架，内置 300+ 连接组件，打通企业信息孤岛，构建自动化业务流程。', url: 'https://www.tlin.cn/airbit-eips' },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首页', item: 'https://www.tlin.cn/' },
+        { '@type': 'ListItem', position: 2, name: '产品', item: 'https://www.tlin.cn/' },
+        { '@type': 'ListItem', position: 3, name: 'AirBit EIPs', item: 'https://www.tlin.cn/airbit-eips' },
+      ]},
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+        { '@type': 'Question', name: 'AirBit EIPs 支持哪些系统集成？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit EIPs 内置 300+ 连接组件，支持与 ERP、CRM、OA、MES、WMS、数据库、消息队列、云服务等主流企业系统和平台集成。' } },
+        { '@type': 'Question', name: '非技术人员能使用 AirBit EIPs 搭建集成流程吗？', acceptedAnswer: { '@type': 'Answer', text: '可以，AirBit EIPs 提供可视化拖拽界面，业务人员无需编写代码即可配置系统间的数据同步和自动化流程。' } },
+        { '@type': 'Question', name: 'AirBit EIPs 如何保障数据集成的可靠性？', acceptedAnswer: { '@type': 'Answer', text: 'AirBit EIPs 内置消息重试、死信队列、事务补偿和幂等控制机制，确保数据在系统间传输的完整性和一致性。' } },
+      ]},
+    ],
   });
   return (
     <div className="bg-white min-h-screen">
