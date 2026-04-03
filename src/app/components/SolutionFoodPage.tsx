@@ -23,7 +23,6 @@ interface PainPoint {
   title: string;
   sub: string;
   desc: string;
-  quote: string;
   icon: IconType;
   color: string;
 }
@@ -48,34 +47,30 @@ interface ScenarioGroup {
 
 const painPoints: PainPoint[] = [
   {
-    title: '追溯要跨五个系统，一次追溯花整整一天',
+    title: '追溯链条长，手工拼接花整整两天',
     sub: 'Traceability Bottleneck',
     desc: '食品安全法要求"正向追踪、反向追溯"，但数据散落在 MES、WMS、QMS、LIMS、SCM 等系统中，一次追溯报告要手工拼接整整两天。',
-    quote: '监管层来检查，我们准备追溯数据用了整整两天。',
     icon: Search,
     color: 'text-orange-500',
   },
   {
-    title: '临期预警靠人工巡查，冷链断链事后才发现',
+    title: '临期预警靠人工，冷链断链事后才发现',
     sub: 'Cold Chain Blind Spot',
-    desc: '保质期是食品的生命线，但临期预警依赖人工查点；冷链车辆温控告警分散在 SCADA 和 TMS 中，超温发现了已损失数十万。',
-    quote: '一个周末冷链车超温，等周一发现已经损失了二十万。',
+    desc: '保质期是食品的生命线，但临期预警依赖人工查点；冷链车辆温控告警分散在 SCADA 和 TMS 中，超温发现时已损失数十万。',
     icon: Truck,
     color: 'text-blue-500',
   },
   {
     title: '合规资料准备重，审计前整整一周在凑材料',
     sub: 'Audit Preparation Burden',
-    desc: 'GMP、HACCP、SC 许可、ISO 22000……每次审计都是临窗突击，生产记录、检测报告、SOP 文件散在四个系统里，每次外审准备至少一周。',
-    quote: '每年两次外审，每次准备资料至少一周。',
+    desc: 'GMP、HACCP、SC 许可、ISO 22000……每次外审都是临窗突击，生产记录、检测报告、SOP 文件散在四个系统里，每次外审准备至少一周。',
     icon: ClipboardList,
     color: 'text-purple-500',
   },
   {
-    title: 'AI 想用不敢用——配方和供应商报价是核心机密',
+    title: 'AI 想用不敢用——配方和供应商来价是核心机密',
     sub: 'IP And Data Security',
-    desc: '配方参数、供应商来价、质检数据被分给外部模型训练，Token 成本快速增长但无法归口。配方是核心机密，这些数据绝对不能出厂。',
-    quote: '配方是核心机密，供应商来价是商业秘密，这些数据绝对不能出厂。',
+    desc: '配方参数、供应商来价、质检数据分给外部模型，Token 成本快速增长但无法归口。配方和报价是核心机密，这些数据绝对不能出厂。',
     icon: Shield,
     color: 'text-rose-500',
   },
@@ -174,14 +169,14 @@ const scenarios: ScenarioGroup[] = [
     title: '批次追溯与食品安全',
     subtitle: '一个批次号，30 秒串联从原料到消费者的全链路',
     positioning: '一个批次号，30 秒串联从原料到消费者的全链路——正向追踪、反向追溯',
-    coreSystems: ['MES', 'WMS', 'QMS', 'LIMS', 'SCM', 'OMS', '溯源平台'],
+    coreSystems: ['MES', 'WMS', 'QMS', 'LIMS', 'SCM', 'OMS'],
     icon: Search,
     color: 'purple',
     cards: [
       {
         role: '质量总监',
         quote: '批次号 BT-0315 的原料来源、生产工艺记录、质检结果和流向去向？',
-        solution: 'AI 同时调用 SCM（原料批次和供应商）+ MES（生产记录和工艺参数）+ QMS/LIMS（质检数据）+ WMS（库存出入库记录）+ OMS（发货订单），30 秒生成完整的反向追溯链。',
+        solution: 'AI 同时调用 SCM（原料批次和供应商）+ MES（生产记录和工艺参数）+ QMS/LIMS（质检数据）+ WMS（出入库记录）+ OMS（发货订单），30 秒生成完整反向追溯链。',
         systems: ['MES', 'WMS', 'QMS', 'LIMS', 'SCM', 'OMS'],
       },
       {
@@ -201,8 +196,8 @@ const scenarios: ScenarioGroup[] = [
   {
     id: 'inventory',
     title: '仓储与库存管理',
-    subtitle: '临期预警、冷库温湿度、补货建议，实时可查',
-    positioning: '临期实时预警、冷库温湿度在线、补货建议可执行',
+    subtitle: '临期预警、冷库温湿度在线、补货建议可执行',
+    positioning: '临期实时预警、冷库温湿度在线、调拨补货建议可执行',
     coreSystems: ['WMS', 'SCADA/IoT', 'OMS', 'POS', 'DRP', 'ERP'],
     icon: Package,
     color: 'cyan',
@@ -230,11 +225,11 @@ const scenarios: ScenarioGroup[] = [
   {
     id: 'logistics',
     title: '物流与冷链配送',
-    subtitle: '冷链温控全程可视，断链秒级告警，签收异常根因分析',
-    positioning: '冷链温控全程可视，断链秒级告警，配送费用可控',
+    subtitle: '冷链温控全程可视，断链秒级告警，配送费用可控',
+    positioning: '冷链温控全程可视，断链秒级告警，签收异常根因分析',
     coreSystems: ['TMS', 'IoT', 'OMS', 'ERP', 'QMS'],
     icon: Truck,
-    color: 'green',
+    color: 'emerald',
     cards: [
       {
         role: '物流经理',
@@ -250,7 +245,7 @@ const scenarios: ScenarioGroup[] = [
       },
       {
         role: '客服主管',
-        quote: '本周的签收异常订单，有多少，主要异常原因是什么？',
+        quote: '本周的签收异常订单有多少，主要异常原因是什么？',
         solution: 'AI 分析 TMS（签收数据）+ OMS（订单关联）+ QMS（质量原因），输出签收率统计和异常根因分析。',
         systems: ['TMS', 'OMS', 'QMS'],
       },
@@ -261,9 +256,9 @@ const scenarios: ScenarioGroup[] = [
     title: '营销与渠道管理',
     subtitle: '全渠道促销对比、经销商达成、新品铺市追踪，问一句即达',
     positioning: '全渠道促销效果、经销商目标达成、新品铺市数据一句到达',
-    coreSystems: ['OMS', 'POS', 'CRM', 'CDP', 'DRP', 'BI', 'MAP'],
+    coreSystems: ['OMS', 'POS', 'CRM', 'CDP', 'DRP', 'BI'],
     icon: BarChart3,
-    color: 'orange',
+    color: 'rose',
     cards: [
       {
         role: '营销VP',
@@ -288,11 +283,11 @@ const scenarios: ScenarioGroup[] = [
   {
     id: 'finance',
     title: '财务与经营分析',
-    subtitle: 'CEO 的经营日报、CFO 的成本拆解、渠道的利润对比，问一句话即达',
+    subtitle: 'CEO 的经营日报、CFO 的成本拆解、渠道利润对比，问一句话即达',
     positioning: 'CEO 的经营日报、CFO 的成本拆解、渠道盈利对比，问一句话即达',
     coreSystems: ['ERP', 'BI', 'POS', 'OMS', 'MES', 'WMS'],
     icon: DollarSign,
-    color: 'rose',
+    color: 'slate',
     cards: [
       {
         role: 'CEO',
@@ -316,21 +311,471 @@ const scenarios: ScenarioGroup[] = [
   },
 ];
 
-const colorMap: Record<string, { bg: string; border: string; text: string; badge: string; dot: string }> = {
-  blue: { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-700', badge: 'bg-blue-100 text-blue-700', dot: 'bg-blue-500' },
-  green: { bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-700', badge: 'bg-emerald-100 text-emerald-700', dot: 'bg-emerald-500' },
-  amber: { bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-700', badge: 'bg-amber-100 text-amber-700', dot: 'bg-amber-500' },
-  purple: { bg: 'bg-purple-50', border: 'border-purple-200', text: 'text-purple-700', badge: 'bg-purple-100 text-purple-700', dot: 'bg-purple-500' },
-  cyan: { bg: 'bg-cyan-50', border: 'border-cyan-200', text: 'text-cyan-700', badge: 'bg-cyan-100 text-cyan-700', dot: 'bg-cyan-500' },
-  orange: { bg: 'bg-orange-50', border: 'border-orange-200', text: 'text-orange-700', badge: 'bg-orange-100 text-orange-700', dot: 'bg-orange-500' },
-  rose: { bg: 'bg-rose-50', border: 'border-rose-200', text: 'text-rose-700', badge: 'bg-rose-100 text-rose-700', dot: 'bg-rose-500' },
+const metrics = [
+  {
+    value: '30 秒',
+    label: '批次全链路追溯',
+    desc: '从"跨系统拼接花两天"到"一个批次号 30 秒串联全链路"——原料来源、生产记录、质检数据、流向去向一次查清',
+  },
+  {
+    value: '30–50%',
+    label: 'AI 调用成本降低',
+    desc: '语义缓存拦截高频重复查询 + 模型智能调度，"批次质检结果"类查询直接命中缓存',
+  },
+  {
+    value: '22+',
+    label: '套系统零改造接入',
+    desc: 'MES · WMS · QMS · LIMS · ERP · OMS · SCADA SCM · TMS · POS · CRM · GRC ……通过协议桥接，前端零改造',
+  },
+  {
+    value: '≈0',
+    label: '数据泄露风险',
+    desc: '配方参数、供应商来价自动脱敏不投给模型；数据权限隔离 + 操作确认 + 全量审计',
+  },
+];
+
+const colorMap: Record<string, { panel: string; accent: string; tag: string }> = {
+  blue:    { panel: 'bg-blue-50 border-blue-200',    accent: 'text-blue-600',    tag: 'bg-blue-100 text-blue-700' },
+  green:   { panel: 'bg-green-50 border-green-200',  accent: 'text-green-600',   tag: 'bg-green-100 text-green-700' },
+  amber:   { panel: 'bg-amber-50 border-amber-200',  accent: 'text-amber-600',   tag: 'bg-amber-100 text-amber-700' },
+  purple:  { panel: 'bg-purple-50 border-purple-200',accent: 'text-purple-600',  tag: 'bg-purple-100 text-purple-700' },
+  cyan:    { panel: 'bg-cyan-50 border-cyan-200',    accent: 'text-cyan-600',    tag: 'bg-cyan-100 text-cyan-700' },
+  rose:    { panel: 'bg-rose-50 border-rose-200',    accent: 'text-rose-600',    tag: 'bg-rose-100 text-rose-700' },
+  emerald: { panel: 'bg-emerald-50 border-emerald-200', accent: 'text-emerald-600', tag: 'bg-emerald-100 text-emerald-700' },
+  slate:   { panel: 'bg-slate-50 border-slate-200',  accent: 'text-slate-600',   tag: 'bg-slate-100 text-slate-700' },
 };
 
-export function SolutionFoodPage() {
-  const [activeScenario, setActiveScenario] = useState(0);
-  const [activeCard, setActiveCard] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+function Hero() {
+  return (
+    <section className="relative overflow-hidden bg-[#FAFAFC] pt-32 pb-20 lg:pt-48 lg:pb-28">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+      <div className="relative z-10 mx-auto grid max-w-[1200px] items-center gap-16 px-6 lg:grid-cols-2">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-xs font-semibold text-[#0071E3]">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#0071E3]" />
+            </span>
+            Food Industry Solution
+          </div>
+          <h1 className="mb-6 text-5xl font-bold leading-[1.04] tracking-tight text-[#1D1D1F] lg:text-7xl">
+            从原料到餐桌
+            <br />
+            <span className="text-[#0071E3]">让每一批次都可追溯</span>
+          </h1>
+          <p className="mb-10 max-w-xl text-xl font-light leading-relaxed text-[#86868B]">
+            AirBit 帮助食品企业用自然语言驱动 22+ 套业务系统，让 AI 进入采购、生产、质检、追溯、冷链、营销全链路，全观察审计，安全不出厂。
+          </p>
+          <div className="mb-10 grid max-w-md grid-cols-2 gap-4">
+            {[
+              { label: '批次追溯', icon: <Search className="h-4 w-4" /> },
+              { label: '冷链监控', icon: <Truck className="h-4 w-4" /> },
+              { label: '合规审计', icon: <ClipboardList className="h-4 w-4" /> },
+              { label: '经营分析', icon: <BarChart3 className="h-4 w-4" /> },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center gap-2 text-sm text-[#424245]">
+                <div className="rounded border border-[#E5E5EA] bg-white p-1.5 text-[#0071E3] shadow-sm">{item.icon}</div>
+                {item.label}
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col gap-4 sm:flex-row">
+            <Link to="/contact" className="flex items-center justify-center gap-2 rounded-full bg-[#0071E3] px-8 py-3.5 font-medium text-white shadow-md transition-all hover:scale-105 hover:bg-[#0077ED] hover:shadow-lg">
+              预约行业演示 <ArrowRight className="h-4 w-4" />
+            </Link>
+            <a href="#overview" className="flex items-center justify-center gap-2 rounded-full border border-[#E5E5EA] bg-white px-8 py-3.5 font-medium text-[#1D1D1F] shadow-sm transition-all hover:scale-105 hover:bg-[#FAFAFC] hover:shadow-md">
+              查看全链路方案
+            </a>
+          </div>
+        </motion.div>
 
+        <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9 }}>
+          <div className="rounded-[36px] border border-[#E5E5EA] bg-white/90 p-6 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.25)] backdrop-blur">
+            <div className="mb-4 flex items-center justify-between">
+              <div>
+                <div className="text-sm font-semibold text-[#1D1D1F]">AirBit Food Copilot</div>
+                <div className="text-xs text-[#86868B]">MES · WMS · QMS · LIMS · ERP · OMS</div>
+              </div>
+              <div className="rounded-full bg-[#F5F5F7] px-3 py-1 text-xs font-medium text-[#0071E3]">实时联动</div>
+            </div>
+            <div className="space-y-4 rounded-[28px] bg-[#FAFAFC] p-5">
+              <div className="rounded-2xl bg-white p-4 shadow-sm">
+                <div className="mb-2 text-xs font-semibold text-[#0071E3]">质量总监</div>
+                <div className="text-sm leading-relaxed text-[#1D1D1F]">批次号 BT-0315 的原料来源、生产工艺记录、质检结果和流向去向？</div>
+              </div>
+              <div className="rounded-2xl border border-blue-100 bg-blue-50 p-4">
+                <div className="mb-2 text-xs font-semibold text-[#0071E3]">AI 分析结果</div>
+                <ul className="space-y-2 text-sm leading-relaxed text-[#424245]">
+                  <li>原料：面粉-华粮农产 2024-03-10，大豆油-益海嘉里 2024-03-08。</li>
+                  <li>生产：2 号线 2024-03-15，蒸煮 95°C × 8min，CIP 已完成。</li>
+                  <li>质检：微生物✓ 理化✓ 感官✓ 全项合格；已发货 1200 箱，涉及华东 KA × 8 订单。</li>
+                </ul>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-3">
+                {['批次追溯', '冷链预警', '合规审计'].map((item) => (
+                  <div key={item} className="rounded-2xl border border-[#E5E5EA] bg-white px-4 py-3 text-center text-xs font-medium text-[#1D1D1F]">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function PainPoints() {
+  return (
+    <section className="bg-white py-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-[#1D1D1F]">食品企业 AI 落地的真实难点</h2>
+          <p className="text-[#86868B]">问题不在于没有模型，而在于批次可追溯、冷链稳定、审计合规和数据安全。</p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {painPoints.map((point, index) => {
+            const Icon = point.icon;
+            return (
+              <motion.div
+                key={point.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.08 }}
+                className="rounded-3xl border border-[#E5E5EA] bg-[#FAFAFC] p-8 shadow-sm"
+              >
+                <div className="mb-6 flex items-start justify-between gap-4">
+                  <div className="rounded-2xl border border-[#E5E5EA] bg-white p-3 shadow-sm">
+                    <Icon className={`h-6 w-6 ${point.color}`} />
+                  </div>
+                  <div className="text-right">
+                    <h3 className="text-lg font-bold text-[#1D1D1F]">{point.title}</h3>
+                    <div className="text-xs font-medium uppercase tracking-wider text-[#86868B]">{point.sub}</div>
+                  </div>
+                </div>
+                <p className="text-sm leading-relaxed text-[#86868B]">{point.desc}</p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ScenarioShowcase() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const activeScenario = scenarios[activeIndex];
+  const theme = colorMap[activeScenario.color];
+  const ActiveIcon = activeScenario.icon;
+
+  useEffect(() => {
+    if (isPaused) {
+      return undefined;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % scenarios.length);
+    }, 2500);
+
+    return () => window.clearInterval(timer);
+  }, [isPaused]);
+
+  return (
+    <section id="overview" className="bg-[#FAFAFC] py-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <div className="mb-14 text-center">
+          <div className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-[#0071E3]">Overview</div>
+          <h2 className="mb-6 text-4xl font-bold text-[#1D1D1F] md:text-5xl">八大场景，覆盖食品全价值链</h2>
+          <p className="mx-auto max-w-3xl text-[#86868B]">
+            从原料采购到生产质检，从批次追溯到冷链配送，从营销渠道到财务经营，AirBit 用自然语言串联 22+ 套业务系统，让每个业务角色都能用 AI 做完了。
+          </p>
+        </div>
+
+        <div className="mb-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+          {scenarios.map((scenario, index) => {
+            const cardTheme = colorMap[scenario.color];
+            const Icon = scenario.icon;
+            const isActive = index === activeIndex;
+            return (
+              <button
+                key={scenario.id}
+                type="button"
+                onClick={() => setActiveIndex(index)}
+                className={`rounded-[28px] border p-6 text-left transition-all ${
+                  isActive ? `${cardTheme.panel} shadow-md` : 'border-[#E5E5EA] bg-white hover:border-[#C7D2FE]'
+                }`}
+              >
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white shadow-sm">
+                  <Icon className={`h-5 w-5 ${cardTheme.accent}`} />
+                </div>
+                <div className="mb-2 text-lg font-bold text-[#1D1D1F]">{scenario.title}</div>
+                <div className="text-sm leading-relaxed text-[#86868B]">{scenario.subtitle}</div>
+              </button>
+            );
+          })}
+        </div>
+
+        <div
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          className={`rounded-[36px] border p-8 lg:p-10 ${theme.panel}`}
+        >
+          <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-white shadow-sm">
+                <ActiveIcon className={`h-6 w-6 ${theme.accent}`} />
+              </div>
+              <h3 className="mb-3 text-4xl font-bold text-[#1D1D1F]">{activeScenario.title}</h3>
+              <p className="max-w-2xl text-lg leading-relaxed text-[#86868B]">{activeScenario.positioning}</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {activeScenario.coreSystems.map((system) => (
+                <span key={system} className={`rounded-full px-3 py-1 text-xs font-semibold ${theme.tag}`}>
+                  {system}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeScenario.id}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.28 }}
+              className="grid gap-6 lg:grid-cols-3"
+            >
+              {activeScenario.cards.map((card) => (
+                <div key={card.role} className="rounded-[28px] border border-[#E5E5EA] bg-white p-6 shadow-sm">
+                  <div className={`mb-4 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${theme.tag}`}>{card.role}</div>
+                  <p className="mb-5 border-l-2 border-[#E5E5EA] pl-4 text-base leading-relaxed text-[#1D1D1F]">"{card.quote}"</p>
+                  <div className="rounded-2xl bg-[#F5F5F7] p-4">
+                    <div className="mb-2 text-sm font-bold uppercase tracking-wide text-[#0071E3]">AirBit 方案</div>
+                    <p className="text-sm leading-relaxed text-[#1D1D1F]">{card.solution}</p>
+                  </div>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {card.systems.map((system) => (
+                      <span key={system} className="rounded-full bg-[#F5F5F7] px-3 py-1 text-xs text-[#86868B]">
+                        {system}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <div className="mt-6 flex justify-center gap-2">
+          {scenarios.map((scenario, index) => (
+            <button
+              key={scenario.id}
+              type="button"
+              aria-label={scenario.title}
+              onClick={() => setActiveIndex(index)}
+              className={`h-2.5 rounded-full transition-all ${index === activeIndex ? 'w-8 bg-[#0071E3]' : 'w-2.5 bg-[#D1D1D6]'}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PlatformSection() {
+  const capabilities = [
+    {
+      product: 'Portal',
+      role: '业务用户的自然语言操作入口',
+      desc: '品控总监用自然语言查批次追溯链，CEO 用自然语言看经营日报，车间主任查 CIP 清洁记录。不是聊天窗口，是能操作 22+ 套系统的业务助理。',
+    },
+    {
+      product: 'MCP Gateway',
+      role: '企业系统零改造接入',
+      desc: '将 MES/WMS/QMS/LIMS/ERP/OMS/SCADA 等系统通过协议桥接转化为 AI 可调用的工具。前端零改造。这是"一个批次号查全链路"的基础——AI 需要同时调用 5-6 个系统。',
+    },
+    {
+      product: 'AI Gateway',
+      role: '多模型统一调度',
+      desc: '统一调用 GPT / Claude / DeepSeek / 混元等模型，知识检索用搜索模型，数据分析用推理模型，按场景智能选择。语义缓存让"批次质检结果"类高频查询直接命中缓存，降低 30–50% 成本。',
+    },
+    {
+      product: 'Guardrails',
+      role: 'AI 安全策略引擎',
+      desc: '配方参数、供应商来价自动脱敏不投给模型；数据权限隔离（工厂只能看自己工厂的数据）；操作类指令需确认后执行，防止误操作。',
+    },
+    {
+      product: 'Eips',
+      role: '自动化流程编排',
+      desc: '临期预警 → 自动匹配促销渠道 → 生成调拨建议 → 通知审批；供应商资质到期 → 自动通知采购 → 触发续签跟进。200+ 预置连接器，业务人员拖拽即建。',
+    },
+    {
+      product: 'AIO',
+      role: '全栈可观测',
+      desc: 'Token 成本归口到工厂/部门/应用；AI 答复质量评估；全量交互审计日志。合规审计时，所有 AI 交互记录可一键导出作为证据链。',
+    },
+  ];
+
+  return (
+    <section className="bg-white py-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-[#1D1D1F]">AirBit 平台如何支撑食品全价值链</h2>
+          <p className="mx-auto max-w-3xl text-[#86868B]">
+            场景落地是统一平台的成果——每个产品组件各司其职，通过一个平台联动。
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {capabilities.map((cap, i) => (
+            <motion.div
+              key={cap.product}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="rounded-3xl border border-[#E5E5EA] bg-[#FAFAFC] p-6 shadow-sm"
+            >
+              <div className="mb-3 flex items-center gap-2">
+                <span className="text-sm font-bold text-[#0071E3]">{cap.product}</span>
+                <span className="text-[#D1D1D6]">·</span>
+                <span className="text-xs text-[#86868B]">{cap.role}</span>
+              </div>
+              <p className="text-sm leading-relaxed text-[#86868B]">{cap.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Metrics() {
+  return (
+    <section className="border-t border-[#F5F5F7] bg-[#FAFAFC] py-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-[#1D1D1F]">可量化的业务价值</h2>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {metrics.map((m, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="rounded-3xl border border-[#E5E5EA] bg-white p-8 text-center shadow-sm"
+            >
+              <div className="mb-2 text-4xl font-bold text-[#0071E3]">{m.value}</div>
+              <div className="mb-2 text-sm font-semibold text-[#1D1D1F]">{m.label}</div>
+              <div className="text-xs leading-relaxed text-[#86868B]">{m.desc}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CaseStudy() {
+  return (
+    <section className="bg-white py-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <h2 className="mb-12 text-center text-4xl font-bold text-[#1D1D1F]">客户案例</h2>
+        <div className="overflow-hidden rounded-3xl border border-[#E5E5EA] shadow-sm">
+          <div className="border-b border-[#D1E4FF] bg-[#EBF3FF] px-10 py-8">
+            <div className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#0071E3]">某知名食品集团</div>
+            <h3 className="mb-2 text-2xl font-bold text-[#1D1D1F]">年营收 80 亿+，旗下 5 家生产工厂</h3>
+            <p className="text-sm text-[#86868B]">产品覆盖乳制品、肉制品、休闲食品，覆盖 MES · WMS · QMS · LIMS · ERP · OMS · TMS · SCADA 等 18 套核心系统</p>
+          </div>
+          <div className="grid gap-10 p-10 lg:grid-cols-3">
+            <div>
+              <h4 className="mb-4 text-[11px] font-bold uppercase tracking-wider text-[#86868B]">核心痛点</h4>
+              <ul className="space-y-3">
+                {[
+                  '批次追溯需跨 5 个系统手工拼接，一次追溯耗时两天',
+                  '临期预警依赖人工巡查，冷链超温事后才发现',
+                  '每次外部审计（ISO 22000 / HACCP）准备资料至少一周',
+                  'AI 安全顾虑：配方和供应商数据导致大模型无法上线',
+                  'Token 成本快速增长但无法归口到工厂和部门',
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-2 text-sm text-[#86868B]">
+                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#86868B]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="mb-4 text-[11px] font-bold uppercase tracking-wider text-[#86868B]">AirBit 方案</h4>
+              <ul className="space-y-3">
+                {[
+                  '私有化部署，数据安全不出厂，配方绝对隔离',
+                  'MCP Gateway 桥接 18 套系统，前端零改造',
+                  'Portal 为品控、生产、供应链、财务团队提供自然语言操作入口',
+                  'Guardrails 全链路安全：配方脱敏、数据权限隔离',
+                  'Eips 搭建自动化流程：临期预警→促销渠道→通知审批；冷链超温→自动告警→生成处置工单',
+                  'AIO 成本归口到工厂/部门 + 合规审计日志支持一键导出',
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-2 text-sm text-[#1D1D1F]">
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#34C759]" strokeWidth={3} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="mb-4 text-[11px] font-bold uppercase tracking-wider text-[#86868B]">实施成果</h4>
+              <div className="space-y-4">
+                {[
+                  { v: '18 套系统', l: '零改造接入' },
+                  { v: '30 秒', l: '批次全链路追溯（原来两天）' },
+                  { v: '60%', l: '临期库损金额减少（AI 预警 + 自动匹配促销）' },
+                  { v: '1周 → 1天', l: '外部审计数据准备时间' },
+                  { v: '45%', l: 'Token 成本降低（语义缓存 + 模型调度）' },
+                  { v: '0', l: '上线后数据安全事故' },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-baseline gap-3">
+                    <span className="flex-shrink-0 text-2xl font-bold text-[#0071E3]">{item.v}</span>
+                    <span className="text-sm text-[#86868B]">{item.l}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CTA() {
+  return (
+    <section className="border-t border-black/5 bg-[#FAFAFC] py-24">
+      <div className="mx-auto max-w-[860px] px-6 text-center">
+        <h2 className="mb-6 text-4xl font-bold tracking-tight text-[#1D1D1F] lg:text-5xl">让 AI 守护从原料到餐桌的每一个环节</h2>
+        <p className="mb-10 text-xl font-light leading-relaxed text-[#86868B]">
+          从批次追溯、冷链预警到经营分析，AirBit 帮你用一套平台把食品业务真正串起来。
+        </p>
+        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Link to="/contact" className="w-full rounded-full bg-[#0071E3] px-8 py-4 font-medium text-white shadow-md transition-all hover:scale-105 hover:bg-[#005bb5] sm:w-auto">
+            预约食品行业专项演示
+          </Link>
+          <Link to="/contact" className="w-full rounded-full border border-[#E5E5E5] bg-white px-8 py-4 font-medium text-[#1D1D1F] shadow-sm transition-all hover:scale-105 hover:bg-[#FAFAFC] sm:w-auto">
+            定制企业专属接入方案
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function SolutionFoodPage() {
   useSEO({
     title: '食品行业 AI 解决方案 | AirBit',
     description: 'AirBit 为食品企业提供批次追溯、冷链监控、质量管控、合规审计和经营分析的 AI 解决方案，帮助企业在安全可控前提下提升效率。',
@@ -338,404 +783,34 @@ export function SolutionFoodPage() {
     keywords: '食品行业 AI 解决方案, 食品安全 AI, 冷链 AI, 质量追溯 AI, 食品供应链 AI, AirBit',
     image: '/og-airbit.svg',
     jsonLd: [
-      { '@context': 'https://schema.org', '@type': 'WebPage', name: '食品行业 AI 解决方案', description: 'AirBit 为食品企业提供批次追溯、冷链监控、供应链协同和经营分析的 AI 解决方案。', url: 'https://www.tlin.cn/solution-food' },
-      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
-        { '@type': 'ListItem', position: 1, name: '首页', item: 'https://www.tlin.cn/' },
-        { '@type': 'ListItem', position: 2, name: '市场', item: 'https://www.tlin.cn/' },
-        { '@type': 'ListItem', position: 3, name: '食品行业', item: 'https://www.tlin.cn/solution-food' },
-      ] },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: '食品行业 AI 解决方案',
+        description: 'AirBit 为食品企业提供批次追溯、冷链监控、供应链协同和经营分析的 AI 解决方案。',
+        url: 'https://www.tlin.cn/solution-food',
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: '首页', item: 'https://www.tlin.cn/' },
+          { '@type': 'ListItem', position: 2, name: '市场', item: 'https://www.tlin.cn/' },
+          { '@type': 'ListItem', position: 3, name: '食品行业', item: 'https://www.tlin.cn/solution-food' },
+        ],
+      },
     ],
   });
 
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      setActiveCard(prev => {
-        const currentScenario = scenarios[activeScenario];
-        if (prev < currentScenario.cards.length - 1) return prev + 1;
-        setActiveScenario(s => (s + 1) % scenarios.length);
-        return 0;
-      });
-    }, 2500);
-    return () => clearInterval(interval);
-  }, [activeScenario, isPaused]);
-
-  const currentScenario = scenarios[activeScenario];
-  const colors = colorMap[currentScenario.color] || colorMap.blue;
-
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-[#0A1628] pt-24 pb-20">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left */}
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white/80 text-sm mb-6">
-                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                食品行业解决方案
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-                从原料到餐桌<br />
-                <span className="text-[#0071E3]">让每一批次都可追溯</span>
-              </h1>
-              <p className="text-lg text-white/70 mb-8 leading-relaxed">
-                AirBit 帮助食品企业用自然语言驱动 22+ 套业务系统，让 AI 进入采购、生产、质检、追溯、冷链、营销全链路，全观察审计，安全不出厂。
-              </p>
-              <div className="flex flex-wrap gap-3 mb-8">
-                {[
-                  { label: '批次追溯', icon: Search },
-                  { label: '冷链监控', icon: Truck },
-                  { label: '合规审计', icon: ClipboardList },
-                  { label: '经营分析', icon: BarChart3 },
-                ].map(({ label, icon: Icon }) => (
-                  <div key={label} className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white/80 text-sm">
-                    <Icon className="h-4 w-4" />
-                    {label}
-                  </div>
-                ))}
-              </div>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0071E3] text-white font-medium hover:bg-[#0077ED] transition-colors"
-              >
-                预约行业演示
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            {/* Right: dialog demo */}
-            <div className="relative">
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-red-400" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                  <div className="w-3 h-3 rounded-full bg-green-400" />
-                  <span className="ml-2 text-white/40 text-xs">AirBit Portal — 食品质量管理</span>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex justify-end">
-                    <div className="bg-[#0071E3] text-white text-sm px-4 py-2 rounded-2xl rounded-tr-sm max-w-xs">
-                      批次号 BT-0315 的原料来源、生产工艺记录、质检结果和流向去向？
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <div className="w-6 h-6 rounded-full bg-[#0071E3]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-[#0071E3] text-xs font-bold">A</span>
-                    </div>
-                    <div className="bg-white/10 text-white/90 text-sm px-4 py-3 rounded-2xl rounded-tl-sm max-w-sm">
-                      <p className="font-medium text-white mb-2">批次 BT-0315 全链路追溯</p>
-                      <div className="space-y-1 text-white/70 text-xs">
-                        <p>· <span className="text-green-400">原料来源</span>：面粉-华粮农产 2024-03-10，大豆油-益海嘉里 2024-03-08</p>
-                        <p>· <span className="text-blue-400">生产记录</span>：2号线 2024-03-15，蒸煮 95°C × 8min，CIP 已完成</p>
-                        <p>· <span className="text-amber-400">质检结果</span>：微生物✓ 理化✓ 感官✓ 全项合格</p>
-                        <p>· <span className="text-purple-400">流向去向</span>：已发货 1200箱，涉及 华东KA × 8 订单</p>
-                      </div>
-                      <div className="flex flex-wrap gap-1 mt-2">
-                        {['SCM', 'MES', 'QMS', 'LIMS', 'WMS', 'OMS'].map(s => (
-                          <span key={s} className="text-xs bg-white/10 text-white/60 px-2 py-0.5 rounded">{s}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pain Points */}
-      <section className="py-20 bg-[#F1F5F9]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">食品企业正在面临的 AI 落地挑战</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">食品行业关心的不只是效率，更是批次可追溯、冷链稳定、审计合规和数据安全。</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {painPoints.map((p) => (
-              <div key={p.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <p.icon className={`h-8 w-8 ${p.color} mb-4`} />
-                <h3 className="font-semibold text-gray-900 mb-1">{p.title}</h3>
-                <p className="text-xs text-gray-400 mb-3">{p.sub}</p>
-                <p className="text-sm text-gray-600 mb-4">{p.desc}</p>
-                <blockquote className="border-l-2 border-gray-200 pl-3 text-xs text-gray-400 italic">"{p.quote}"</blockquote>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Scenarios Overview */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">八大场景，覆盖食品全价值链</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">从原料采购到生产质检，从批次追溯到冷链配送，从营销渠道到财务经营，团队可以直接问业务、拿结果。</p>
-          </div>
-          {/* Scenario tabs + card demo */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-            {/* Left: scenario list */}
-            <div className="space-y-2">
-              {scenarios.map((s, i) => {
-                const c = colorMap[s.color] || colorMap.blue;
-                return (
-                  <button
-                    key={s.id}
-                    onClick={() => { setActiveScenario(i); setActiveCard(0); }}
-                    className={`w-full text-left px-4 py-3 rounded-xl border transition-all ${i === activeScenario ? `${c.bg} ${c.border} ${c.text}` : 'bg-gray-50 border-gray-100 text-gray-600 hover:bg-gray-100'}`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${i === activeScenario ? `${c.dot} text-white` : 'bg-gray-200 text-gray-500'}`}>
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <div>
-                        <div className="font-medium text-sm">{s.title}</div>
-                        <div className="text-xs opacity-70 mt-0.5">{s.subtitle}</div>
-                      </div>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-            {/* Right: card demo */}
-            <div className="lg:col-span-2">
-              <div className={`rounded-2xl border ${colors.border} ${colors.bg} p-6 h-full`}>
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className={`text-lg font-bold ${colors.text}`}>{currentScenario.title}</h3>
-                    <p className="text-sm text-gray-500 mt-1">{currentScenario.positioning}</p>
-                  </div>
-                  <div className="flex flex-wrap gap-1 justify-end max-w-xs">
-                    {currentScenario.coreSystems.map(sys => (
-                      <span key={sys} className={`text-xs px-2 py-0.5 rounded ${colors.badge}`}>{sys}</span>
-                    ))}
-                  </div>
-                </div>
-                {/* Cards */}
-                <div className="space-y-3">
-                  {currentScenario.cards.map((card, ci) => (
-                    <AnimatePresence key={`${activeScenario}-${ci}`} mode="wait">
-                      {ci === activeCard && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -8 }}
-                          transition={{ duration: 0.3 }}
-                          className="bg-white rounded-xl p-4 shadow-sm border border-white"
-                        >
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${colors.badge}`}>{card.role}</span>
-                          </div>
-                          <p className="text-sm text-gray-700 italic mb-2">"{card.quote}"</p>
-                          <p className="text-sm text-gray-600 mb-2">{card.solution}</p>
-                          <div className="flex flex-wrap gap-1">
-                            {card.systems.map(s => (
-                              <span key={s} className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded">{s}</span>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  ))}
-                </div>
-                {/* Dots */}
-                <div className="flex gap-2 mt-4">
-                  {currentScenario.cards.map((_, ci) => (
-                    <button
-                      key={ci}
-                      onClick={() => setActiveCard(ci)}
-                      className={`w-2 h-2 rounded-full transition-all ${ci === activeCard ? colors.dot : 'bg-gray-200'}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Platform Capabilities */}
-      <section className="py-20 bg-[#0A1628]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">AirBit 平台如何支撑食品全价值链</h2>
-            <p className="text-white/60 max-w-2xl mx-auto">场景背后是统一平台的能力——每个产品组件各司其职，通过一个平台联动。</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: 'Portal · 业务用户的自然语言操作入口',
-                desc: '品控总监用自然语言查批次追溯链、CEO 用自然语言看经营日报、车间主任查 CIP 清洁记录。不是聊天窗口，是能操作 22+ 套系统的业务利器。',
-              },
-              {
-                title: 'MCP Gateway · 企业系统零改造接入',
-                desc: '将 MES/WMS/QMS/LIMS/ERP/OMS/SCADA 等系统通过协议桥接暴露为 AI 可调用的工具，前端零改造。这是"一个批次号查全链路"的基础——AI 需要同时调用 5-6 个系统。',
-              },
-              {
-                title: 'AI Gateway · 多模型统一调度',
-                desc: '统一调用 GPT / Claude / DeepSeek / 混元等模型，知识检索用知识搜索模型，数据分析用推理模型，批次追溯场景智能选择。语义缓存让"批次质检结果"类高频查询直接命中缓存，降低 30-50% 成本。',
-              },
-              {
-                title: 'Guardrails · AI 安全策略引擎',
-                desc: '配方参数、供应商来价自动脱敏不投给模型；数据权限隔离（工厂只能看自己工厂的数据）；危险类指令需确认后方可执行，防止误操作。',
-              },
-              {
-                title: 'Eips · 自动化流程编排',
-                desc: '临期预警 → 自动匹配促销渠道 → 生成调拨建议 → 通知审批；供应商资质到期 → 自动通知采购 → 触发续签跟进。200+ 预置连接器，业务人员拖拽建立。',
-              },
-              {
-                title: 'AIO · 全量可观测',
-                desc: 'Token 成本归口到工厂/部门/应用；AI 答复质量评估；全量交互审计日志。合规审计时，所有 AI 交互记录可一键导出作为证据链。',
-              },
-            ].map(({ title, desc }) => (
-              <div key={title} className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                <h3 className="font-semibold text-white mb-3">{title}</h3>
-                <p className="text-white/60 text-sm leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Metrics */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">可量化的业务价值</h2>
-          </div>
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
-            {[
-              { value: '30 秒', label: '批次全链路追溯', sub: '从"跨系统拼接花两天"到"一个批次号 30 秒串联全链路"——原料来源、生产记录、质检数据、流向去向一次查清' },
-              { value: '22+', label: '套系统零改造接入', sub: 'MES · WMS · QMS · LIMS · ERP · OMS · SCADA SCM · TMS · POS · CRM · GRC ……通过协议桥接，前端零改造' },
-              { value: '30-50%', label: 'AI 调用成本降低', sub: '语义缓存拦截高频重复查询 + 模型智能调度"批次质检结果"类查询直接命中缓存' },
-              { value: '1 天→1 小时', label: '审计数据准备时间', sub: 'ISO 22000 / HACCP / SC 许可审核资料从"全程突击一周"到"AI 一键汇总"' },
-              { value: '≡0', label: '数据泄露风险', sub: '配方参数、供应商来价自动脱敏不投给模型；数据权限隔离 + 操作确认 + 全量审计' },
-            ].map(({ value, label, sub }) => (
-              <div key={label} className="text-center p-6 rounded-2xl border border-gray-100 bg-gray-50">
-                <div className="text-3xl lg:text-4xl font-bold text-[#0071E3] mb-2">{value}</div>
-                <div className="font-semibold text-gray-900 mb-2 text-sm">{label}</div>
-                <p className="text-xs text-gray-500 leading-relaxed">{sub}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Case Study */}
-      <section className="py-20 bg-[#F1F5F9]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">客户案例</h2>
-          </div>
-          <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-3">
-              {/* Left: company */}
-              <div className="bg-[#0A1628] p-8 lg:p-10 flex flex-col justify-center">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white/70 text-xs mb-6 w-fit">
-                  <Building2 className="h-3 w-3" />
-                  食品快消行业
-                </div>
-                <h3 className="text-xl font-bold text-white mb-4">某知名食品集团</h3>
-                <div className="space-y-3 text-white/60 text-sm">
-                  <p>年营收 <span className="text-white font-medium">80 亿+</span>，旗下 5 家生产工厂</p>
-                  <p>产品覆盖乳制品、肉制品、休闲食品</p>
-                  <p>营销渠道覆盖线下 KA、电商、餐饮 B2B、社区团购</p>
-                  <p>内部运行 MES · WMS · QMS · LIMS · ERP · OMS · TMS · SCADA 等 <span className="text-white font-medium">18 套</span>核心系统</p>
-                </div>
-              </div>
-              {/* Right: challenge + solution + result */}
-              <div className="lg:col-span-2 p-8 lg:p-10">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs font-bold">!</span>
-                      核心痛点
-                    </h4>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      {[
-                        '批次追溯需跨 5 个系统手工拼接，一次追溯耗时两天',
-                        '临期预警依赖人工巡查，冷链超温事后才发现',
-                        '每次外部审计（ISO 22000 / HACCP）准备资料至少一周',
-                        'AI 安全顾虑：配方和供应商数据导致大模型无法上线',
-                        'Token 成本快速增长但无法归口到工厂和部门',
-                      ].map(t => (
-                        <li key={t} className="flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-red-400 flex-shrink-0 mt-1.5" />
-                          {t}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">→</span>
-                      AirBit 方案
-                    </h4>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      {[
-                        '私有化部署，数据安全不出厂，配方绝对隔离',
-                        'MCP Gateway 桥接 18 套系统，前端零改造',
-                        'Portal 为品控、生产、供应链、财务团队提供自然语言操作入口',
-                        'Guardrails 全链路安全：配方脱敏、数据权限隔离',
-                        'Eips 搭建自动化流程：临期预警→促销渠道→通知审批；冷链超温→自动告警→生成处置工单',
-                        'AIO 成本归口到工厂/部门 + 合规审计日志支持一键导出',
-                      ].map(t => (
-                        <li key={t} className="flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0 mt-1.5" />
-                          {t}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">✓</span>
-                      落地成效
-                    </h4>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      {[
-                        ['18 套系统', '零改造接入'],
-                        ['30 秒', '批次全链路追溯（原来两天）'],
-                        ['60%', '临期库损金额减少（AI 预警 + 自动匹配促销）'],
-                        ['1 周→1 天', '外部审计数据准备时间'],
-                        ['45%', 'Token 成本降低（语义缓存 + 模型调度）'],
-                        ['0', '上线后数据安全事故'],
-                      ].map(([v, t]) => (
-                        <li key={t} className="flex items-start gap-2">
-                          <Check className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
-                          <span><span className="font-semibold text-gray-900">{v}</span> {t}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-[#0A1628]">
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            让 AI 守护从原料到餐桌的每一个环节<br />
-            <span className="text-white/60 text-2xl">安全可追溯，全观察审计，成本可管控</span>
-          </h2>
-          <p className="text-white/60 mb-8">从批次追溯、冷链预警到经营分析，AirBit 帮你用一套平台把食品业务真正串起来。</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl bg-[#0071E3] text-white font-medium hover:bg-[#0077ED] transition-colors"
-            >
-              预约食品行业专项演示
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <p className="text-white/40 text-sm mt-6">sales@airbit.ai · www.airbit.ai</p>
-        </div>
-      </section>
+    <div className="min-h-screen bg-white text-[#1D1D1F]">
+      <Hero />
+      <PainPoints />
+      <ScenarioShowcase />
+      <PlatformSection />
+      <Metrics />
+      <CaseStudy />
+      <CTA />
     </div>
   );
 }
