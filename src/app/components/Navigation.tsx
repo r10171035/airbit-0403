@@ -225,7 +225,7 @@ export function Navigation() {
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <button className={`flex items-center gap-1 transition-colors ${activeDropdown === 'resources' ? 'text-[#0071E3]' : 'text-[#1D1D1F] hover:text-[#0071E3]'}`}>
-                资料
+                资源
                 <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === 'resources' ? 'rotate-180' : ''}`} />
               </button>
               
@@ -317,7 +317,7 @@ export function Navigation() {
                   ))}
                 </div>
                  <div className="py-2 border-b border-[#F5F5F7]">
-                  <div className="text-[#86868B] text-xs mb-2 uppercase tracking-wider">资料</div>
+                  <div className="text-[#86868B] text-xs mb-2 uppercase tracking-wider">资源</div>
                   {resources.map(item => (
                     <Link key={item.name} to={item.href || '#'} className="block py-1 pl-2 text-[#1D1D1F]" onClick={() => setIsOpen(false)}>{item.name}</Link>
                   ))}
