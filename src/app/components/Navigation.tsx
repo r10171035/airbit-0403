@@ -39,27 +39,20 @@ export function Navigation() {
 
   const marketplace = [
     {
-      category: '插件',
-      items: [
-        { name: '插件包', pending: true },
-        { name: '第三方插件', pending: true },
-      ]
-    },
-    {
       category: '解决方案',
-        items: [
-          { name: '制造业', pending: false, href: '/solution-manufacturing' },
-          { name: '鞋服行业', pending: false, href: '/solution-fashion' },
-          { name: '食品行业', pending: false, href: '/solution-food' },
-          { name: '教育行业', pending: false, href: '/solution-education' },
-          { name: '事业单位', pending: false, href: '/solution-public' },
+      items: [
+        { name: '制造业', pending: false, href: '/solution-manufacturing' },
+        { name: '鞋服行业', pending: false, href: '/solution-fashion' },
+        { name: '食品行业', pending: false, href: '/solution-food' },
+        { name: '教育行业', pending: false, href: '/solution-education' },
+        { name: '事业单位', pending: false, href: '/solution-public' },
       ]
     },
     {
       category: '合作伙伴',
       items: [
-        { name: '查找伙伴', pending: true },
-        { name: '成为伙伴', pending: false, href: '/partner' },
+        { name: '寻找 NocoBase 伙伴', pending: true },
+        { name: '成为合作伙伴', pending: false, href: '/partner' },
       ]
     }
   ];
@@ -138,7 +131,7 @@ export function Navigation() {
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <button className={`flex items-center gap-1 transition-colors ${activeDropdown === 'marketplace' ? 'text-[#0071E3]' : 'text-[#1D1D1F] hover:text-[#0071E3]'}`}>
-                市场
+                方案
                 <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === 'marketplace' ? 'rotate-180' : ''}`} />
               </button>
               
@@ -149,9 +142,9 @@ export function Navigation() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-[600px] bg-white rounded-2xl shadow-2xl border border-black/5 p-8 cursor-default"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-[400px] bg-white rounded-2xl shadow-2xl border border-black/5 p-8 cursor-default"
                   >
-                     <div className="grid grid-cols-3 gap-x-12 gap-y-8">
+                     <div className="grid grid-cols-2 gap-x-12 gap-y-8">
                       {marketplace.map((category, idx) => (
                         <div key={idx}>
                           <h4 className="text-[11px] uppercase text-[#86868B] mb-4 tracking-wider font-semibold">
@@ -261,7 +254,7 @@ export function Navigation() {
                   ))}
                 </div>
                  <div className="py-2 border-b border-[#F5F5F7]">
-                  <div className="text-[#86868B] text-xs mb-2 uppercase tracking-wider">市场</div>
+                  <div className="text-[#86868B] text-xs mb-2 uppercase tracking-wider">方案</div>
                   {marketplace.map(cat => (
                     <div key={cat.category} className="mb-3">
                       <div className="text-xs text-[#86868B] mb-1">{cat.category}</div>
