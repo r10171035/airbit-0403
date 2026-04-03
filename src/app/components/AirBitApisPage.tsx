@@ -17,8 +17,12 @@ function cn(...inputs: ClassValue[]) {
 
 function Hero() {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
-      <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-[#FAFAFC]">
+      {/* 网格背景纹理 */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+      {/* 底部渐变过渡 */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none z-20" />
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
         {/* Text Content */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -68,51 +72,132 @@ function Hero() {
             transition={{ duration: 1 }}
             className="relative w-full h-full"
           >
-            {/* Simulated 3D Light Beams using SVGs */}
-            <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-2xl">
+            <svg viewBox="0 0 480 480" className="w-full h-full">
               <defs>
-                <linearGradient id="beamGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#0071E3" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#00C7BE" stopOpacity="0.2" />
+                <filter id="apiGlow">
+                  <feGaussianBlur stdDeviation="8" result="blur"/>
+                  <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                </filter>
+                <filter id="apiCardShadow">
+                  <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#0071E3" floodOpacity="0.1"/>
+                </filter>
+                <linearGradient id="apiRingGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#0071E3"/>
+                  <stop offset="100%" stopColor="#00C7BE"/>
                 </linearGradient>
               </defs>
-              {/* Central Engine */}
-              <circle cx="200" cy="200" r="40" fill="url(#beamGrad)" className="animate-pulse" />
-              <circle cx="200" cy="200" r="38" fill="white" />
-              <circle cx="200" cy="200" r="15" fill="#0071E3" />
-              
-              {/* Incoming Beams */}
-              {[...Array(8)].map((_, i) => (
-                <motion.line
-                  key={`in-${i}`}
-                  x1={200 + Math.cos(i * 0.785) * 200}
-                  y1={200 + Math.sin(i * 0.785) * 200}
-                  x2="200"
-                  y2="200"
-                  stroke="url(#beamGrad)"
-                  strokeWidth="2"
-                  strokeDasharray="10 10"
-                  animate={{ strokeDashoffset: [20, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                />
-              ))}
 
-              {/* Outgoing Beams (Services) */}
-              {[...Array(12)].map((_, i) => (
-                <motion.circle
-                  key={`out-${i}`}
-                  cx={200}
-                  cy={200}
-                  r={5}
-                  fill="#0071E3"
-                  animate={{ 
-                    cx: 200 + Math.cos(i * 0.52) * 180,
-                    cy: 200 + Math.sin(i * 0.52) * 180,
-                    opacity: [1, 0]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity, delay: i * 0.1, ease: "easeOut" }}
+              {/* ── 8 radial beams (dashed, marching) ── */}
+              {(([
+                { angle:  -90 }, { angle:  -45 }, { angle:    0 }, { angle:   45 },
+                { angle:   90 }, { angle:  135 }, { angle:  180 }, { angle:  225 },
+              ]) as {angle:number}[]).map((b, i) => {
+                const rad = b.angle * Math.PI / 180;
+                const ex = 240 + Math.cos(rad) * 200;
+                const ey = 240 + Math.sin(rad) * 200;
+                return (
+                  <motion.line key={i}
+                    x1="240" y1="240" x2={ex} y2={ey}
+                    stroke="#0071E3" strokeOpacity="0.18" strokeWidth="1.5" strokeDasharray="7 5"
+                    animate={{ strokeDashoffset: [24, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: i * 0.1 }}
+                  />
+                );
+              })}
+
+              {/* ── Semantic nodes on 4 axes ── */}
+
+              {/* Top: HTTP/2 */}
+              <g transform="translate(240,68)" filter="url(#apiCardShadow)">
+                <rect x="-34" y="-18" width="68" height="36" rx="10" fill="white" stroke="#E5E5EA" strokeWidth="1"/>
+                <text x="0" y="-3" textAnchor="middle" fontSize="9" fill="#0071E3" fontWeight="700">HTTP/2</text>
+                <text x="0" y="11" textAnchor="middle" fontSize="8" fill="#86868B">gRPC</text>
+              </g>
+
+              {/* Right: Microservice */}
+              <g transform="translate(408,240)" filter="url(#apiCardShadow)">
+                <rect x="-38" y="-18" width="76" height="36" rx="10" fill="white" stroke="#E5E5EA" strokeWidth="1"/>
+                <text x="0" y="-3" textAnchor="middle" fontSize="9" fill="#0071E3" fontWeight="700">微服务</text>
+                <text x="0" y="11" textAnchor="middle" fontSize="8" fill="#86868B">Service Mesh</text>
+              </g>
+
+              {/* Bottom: Rate Limit */}
+              <g transform="translate(240,412)" filter="url(#apiCardShadow)">
+                <rect x="-38" y="-18" width="76" height="36" rx="10" fill="white" stroke="#E5E5EA" strokeWidth="1"/>
+                <text x="0" y="-3" textAnchor="middle" fontSize="9" fill="#0071E3" fontWeight="700">限流熔断</text>
+                <text x="0" y="11" textAnchor="middle" fontSize="8" fill="#86868B">Rate Limit</text>
+              </g>
+
+              {/* Left: Hot Reload */}
+              <g transform="translate(72,240)" filter="url(#apiCardShadow)">
+                <rect x="-38" y="-18" width="76" height="36" rx="10" fill="white" stroke="#E5E5EA" strokeWidth="1"/>
+                <text x="0" y="-3" textAnchor="middle" fontSize="9" fill="#0071E3" fontWeight="700">热更新</text>
+                <text x="0" y="11" textAnchor="middle" fontSize="8" fill="#86868B">Zero Reload</text>
+              </g>
+
+              {/* Diagonal dots (smaller, no card) */}
+              {([
+                { angle: -45,  label: "WebSocket" },
+                { angle:  45,  label: "Auth / JWT" },
+                { angle: 135,  label: "Observ." },
+                { angle: 225,  label: "WAF" },
+              ] as {angle:number,label:string}[]).map((d, i) => {
+                const rad = d.angle * Math.PI / 180;
+                const x = 240 + Math.cos(rad) * 148;
+                const y = 240 + Math.sin(rad) * 148;
+                const lx = 240 + Math.cos(rad) * 175;
+                const ly = 240 + Math.sin(rad) * 175;
+                return (
+                  <g key={i}>
+                    <circle cx={x} cy={y} r="5" fill="#0071E3" opacity="0.35"/>
+                    <text x={lx} y={ly+4} textAnchor="middle" fontSize="9" fill="#86868B" fontWeight="500">{d.label}</text>
+                  </g>
+                );
+              })}
+
+              {/* ── Outgoing flow particles (center → edge) ── */}
+              {([
+                { angle: -90,  delay: 0    },
+                { angle:   0,  delay: 0.5  },
+                { angle:  90,  delay: 1.0  },
+                { angle: 180,  delay: 1.5  },
+                { angle: -45,  delay: 0.25 },
+                { angle:  45,  delay: 0.75 },
+                { angle: 135,  delay: 1.25 },
+                { angle: 225,  delay: 1.75 },
+              ] as {angle:number,delay:number}[]).map((p, i) => {
+                const rad = p.angle * Math.PI / 180;
+                const ex = 240 + Math.cos(rad) * 185;
+                const ey = 240 + Math.sin(rad) * 185;
+                return (
+                  <motion.circle key={i} r="3" fill="#0071E3"
+                    animate={{ cx:[240,ex], cy:[240,ey], opacity:[0,0.85,0] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: p.delay, ease: "easeOut" }}
+                  />
+                );
+              })}
+
+              {/* ── Center Gateway hub ── */}
+              <g transform="translate(240,240)">
+                {/* Outer breathing glow */}
+                <motion.circle r="54" fill="#0071E3"
+                  initial={{ opacity:0.08, scale:0.92 }}
+                  animate={{ opacity:0.16, scale:1.1 }}
+                  transition={{ duration:2.5, repeat:Infinity, repeatType:"reverse", ease:"easeInOut" }}
+                  filter="url(#apiGlow)"
                 />
-              ))}
+                {/* Gradient ring */}
+                <circle r="44" fill="none" stroke="url(#apiRingGrad)" strokeWidth="2" opacity="0.5"/>
+                {/* White disc */}
+                <circle r="38" fill="white"/>
+                {/* Inner blue dot */}
+                <motion.circle r="16" fill="#0071E3"
+                  animate={{ r:[14,17,14] }}
+                  transition={{ duration:2.2, repeat:Infinity, ease:"easeInOut" }}
+                />
+                {/* API label */}
+                <text x="0" y="5" textAnchor="middle" fontSize="9" fill="white" fontWeight="800" letterSpacing="0.05em">API</text>
+              </g>
             </svg>
           </motion.div>
         </div>

@@ -13,6 +13,12 @@ import { ContactPage } from "./components/ContactPage";
 import { CompanyPage } from "./components/CompanyPage";
 import { PartnerPage } from "./components/PartnerPage";
 import { PricingPage } from "./components/PricingPage";
+import { SolutionFashionPage } from "./components/SolutionFashionPage";
+import { SolutionFoodPage } from "./components/SolutionFoodPage";
+import { SolutionEducationPage } from "./components/SolutionEducationPage";
+import { SolutionManufacturingPage } from "./components/SolutionManufacturingPage";
+import { SolutionPublicPage } from "./components/SolutionPublicPage";
+import { NotFoundPage } from "./components/NotFoundPage";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +37,12 @@ export const router = createBrowserRouter([
       { path: "company", Component: CompanyPage },
       { path: "partner", Component: PartnerPage },
       { path: "pricing", Component: PricingPage },
+      { path: "solution-fashion", Component: SolutionFashionPage },
+      { path: "solution-food", Component: SolutionFoodPage },
+      { path: "solution-education", Component: SolutionEducationPage },
+      { path: "solution-manufacturing", Component: SolutionManufacturingPage },
+      { path: "solution-public", Component: SolutionPublicPage },
+      { path: "*", Component: NotFoundPage },
     ],
   },
 ]);

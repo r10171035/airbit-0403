@@ -19,10 +19,10 @@ function cn(...inputs: ClassValue[]) {
 
 function Hero() {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-[#0B1120] text-white">
+    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-[#FAFAFC]">
       {/* Background Grid */}
-      <div className="absolute inset-0 bg-[#ffffff]" />
-      
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
       <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
         {/* Text Content */}
         <motion.div 
@@ -62,118 +62,110 @@ function Hero() {
           </div>
         </motion.div>
 
-        {/* Abstract Animation: Star Topology */}
+        {/* EIP Hub Visual */}
         <div className="relative h-[400px] lg:h-[500px] flex items-center justify-center">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.8 }}
             className="relative w-full h-full flex items-center justify-center"
           >
-            <svg viewBox="0 0 500 500" className="w-full h-full max-w-[500px]">
+            <svg viewBox="0 0 440 440" className="w-full h-full max-w-[440px]">
               <defs>
-                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                <filter id="cardShadow">
+                  <feDropShadow dx="0" dy="2" stdDeviation="6" floodColor="#000" floodOpacity="0.07"/>
                 </filter>
-                <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#000000" floodOpacity="0.05"/>
+                <filter id="hubShadow">
+                  <feDropShadow dx="0" dy="4" stdDeviation="10" floodColor="#0071e3" floodOpacity="0.2"/>
                 </filter>
               </defs>
 
-              {/* Connecting Lines */}
-              {[
-                { x: 100, y: 100 }, // TL
-                { x: 400, y: 100 }, // TR
-                { x: 100, y: 400 }, // BL
-                { x: 400, y: 400 }  // BR
-              ].map((pos, i) => (
-                <g key={i}>
-                  <line 
-                    x1="250" y1="250" 
-                    x2={pos.x} y2={pos.y} 
-                    stroke="#E5E5EA" 
-                    strokeWidth="2" 
-                  />
-                  {/* Particles flowing from nodes to center */}
-                  <motion.circle 
-                    r="3" 
-                    fill="#0071e3"
-                    animate={{ 
-                      cx: [pos.x, 250],
-                      cy: [pos.y, 250],
-                      opacity: [0, 1, 0]
-                    }}
-                    transition={{ 
-                      duration: 2.5, 
-                      repeat: Infinity, 
-                      delay: i * 0.5,
-                      ease: "easeInOut"
-                    }}
-                  />
-                </g>
+              {/* ── Connecting lines (center=220,220) ── */}
+              <line x1="220" y1="220" x2="96" y2="96"   stroke="#E5E5EA" strokeWidth="1.5"/>
+              <line x1="220" y1="220" x2="344" y2="96"  stroke="#E5E5EA" strokeWidth="1.5"/>
+              <line x1="220" y1="220" x2="96" y2="344"  stroke="#E5E5EA" strokeWidth="1.5"/>
+              <line x1="220" y1="220" x2="344" y2="344" stroke="#E5E5EA" strokeWidth="1.5"/>
+
+              {/* ── Animated flow dots ── */}
+              {([
+                { sx:96,  sy:96,  delay:0    },
+                { sx:344, sy:96,  delay:0.75 },
+                { sx:96,  sy:344, delay:1.5  },
+                { sx:344, sy:344, delay:2.25 },
+              ] as {sx:number,sy:number,delay:number}[]).map((p,i)=>(
+                <motion.circle key={i} r="3.5" fill="#0071e3"
+                  animate={{ cx:[p.sx,220], cy:[p.sy,220], opacity:[0,1,0] }}
+                  transition={{ duration:2.2, repeat:Infinity, delay:p.delay, ease:"easeInOut" }}
+                />
               ))}
 
-              {/* Corner Nodes */}
-              {/* Top Left: DB */}
-              <g transform="translate(100 100)">
-                <rect x="-30" y="-30" width="60" height="60" rx="12" fill="white" stroke="#E5E5EA" strokeWidth="1" filter="url(#dropShadow)" />
-                <path d="M-10 -8 C-10 -11 10 -11 10 -8 C10 -5 -10 -5 -10 -8 Z M-10 -2 C-10 1 10 1 10 -2 M-10 4 C-10 7 10 7 10 4" stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round" fill="none" />
-                <text x="0" y="22" textAnchor="middle" fontSize="10" fill="#86868B" fontWeight="500">DB</text>
+              {/* ── Corner cards ── */}
+
+              {/* Top-Left: DB */}
+              <g transform="translate(96,96)" filter="url(#cardShadow)">
+                <rect x="-44" y="-44" width="88" height="88" rx="20" fill="white" stroke="#E5E5EA" strokeWidth="1"/>
+                {/* DB icon */}
+                <ellipse cx="0" cy="-10" rx="15" ry="6" fill="none" stroke="#1D1D1F" strokeWidth="2"/>
+                <line x1="-15" y1="-10" x2="-15" y2="8" stroke="#1D1D1F" strokeWidth="2"/>
+                <line x1="15"  y1="-10" x2="15"  y2="8" stroke="#1D1D1F" strokeWidth="2"/>
+                <ellipse cx="0" cy="8" rx="15" ry="6" fill="none" stroke="#1D1D1F" strokeWidth="2"/>
+                <text x="0" y="32" textAnchor="middle" fontSize="11" fill="#86868B" fontWeight="600">DB</text>
               </g>
 
-              {/* Top Right: SaaS */}
-              <g transform="translate(400 100)">
-                <rect x="-30" y="-30" width="60" height="60" rx="12" fill="white" stroke="#E5E5EA" strokeWidth="1" filter="url(#dropShadow)" />
-                <path d="M-10 2 A 4 4 0 0 1 -6 -5 A 6 6 0 0 1 6 -4 A 4 4 0 0 1 8 2 Z" stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round" fill="none" />
-                <text x="0" y="22" textAnchor="middle" fontSize="10" fill="#86868B" fontWeight="500">SaaS</text>
+              {/* Top-Right: SaaS */}
+              <g transform="translate(344,96)" filter="url(#cardShadow)">
+                <rect x="-44" y="-44" width="88" height="88" rx="20" fill="white" stroke="#E5E5EA" strokeWidth="1"/>
+                {/* Cloud icon */}
+                <path d="M-16,8 A10,10,0,0,1,-10,-8 A12,12,0,0,1,10,-10 A8,8,0,0,1,18,2 A6,6,0,0,1,12,8 Z"
+                  fill="none" stroke="#1D1D1F" strokeWidth="2" strokeLinejoin="round"/>
+                <text x="0" y="32" textAnchor="middle" fontSize="11" fill="#86868B" fontWeight="600">SaaS</text>
               </g>
 
-              {/* Bottom Left: Legacy */}
-              <g transform="translate(100 400)">
-                <rect x="-30" y="-30" width="60" height="60" rx="12" fill="white" stroke="#E5E5EA" strokeWidth="1" filter="url(#dropShadow)" />
-                <rect x="-10" y="-10" width="20" height="6" rx="1" stroke="#1D1D1F" strokeWidth="2" fill="none" />
-                <rect x="-10" y="0" width="20" height="6" rx="1" stroke="#1D1D1F" strokeWidth="2" fill="none" />
-                <text x="0" y="22" textAnchor="middle" fontSize="10" fill="#86868B" fontWeight="500">Legacy</text>
+              {/* Bottom-Left: Legacy */}
+              <g transform="translate(96,344)" filter="url(#cardShadow)">
+                <rect x="-44" y="-44" width="88" height="88" rx="20" fill="white" stroke="#E5E5EA" strokeWidth="1"/>
+                {/* Server rack */}
+                <rect x="-16" y="-16" width="32" height="10" rx="2" fill="none" stroke="#1D1D1F" strokeWidth="2"/>
+                <circle cx="-8" cy="-11" r="2" fill="#1D1D1F"/>
+                <rect x="-16" y="-1"  width="32" height="10" rx="2" fill="none" stroke="#1D1D1F" strokeWidth="2"/>
+                <circle cx="-8" cy="4"  r="2" fill="#1D1D1F"/>
+                <text x="0" y="28" textAnchor="middle" fontSize="11" fill="#86868B" fontWeight="600">Legacy</text>
               </g>
 
-              {/* Bottom Right: IoT */}
-              <g transform="translate(400 400)">
-                <rect x="-30" y="-30" width="60" height="60" rx="12" fill="white" stroke="#E5E5EA" strokeWidth="1" filter="url(#dropShadow)" />
-                <rect x="-8" y="-8" width="16" height="16" rx="2" stroke="#1D1D1F" strokeWidth="2" fill="none" />
-                <path d="M0 -8 V-12 M0 8 V12 M-8 0 H-12 M8 0 H12" stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round" />
-                <text x="0" y="22" textAnchor="middle" fontSize="10" fill="#86868B" fontWeight="500">IoT</text>
+              {/* Bottom-Right: IoT */}
+              <g transform="translate(344,344)" filter="url(#cardShadow)">
+                <rect x="-44" y="-44" width="88" height="88" rx="20" fill="white" stroke="#E5E5EA" strokeWidth="1"/>
+                {/* Chip / IoT */}
+                <rect x="-12" y="-12" width="24" height="24" rx="4" fill="none" stroke="#1D1D1F" strokeWidth="2"/>
+                <rect x="-6"  y="-6"  width="12" height="12" rx="2" fill="#1D1D1F"/>
+                <line x1="-6"  y1="-18" x2="-6"  y2="-12" stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="6"   y1="-18" x2="6"   y2="-12" stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="-6"  y1="12"  x2="-6"  y2="18"  stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="6"   y1="12"  x2="6"   y2="18"  stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="-18" y1="-6"  x2="-12" y2="-6"  stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="-18" y1="6"   x2="-12" y2="6"   stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="12"  y1="-6"  x2="18"  y2="-6"  stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="12"  y1="6"   x2="18"  y2="6"   stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round"/>
+                <text x="0" y="32" textAnchor="middle" fontSize="11" fill="#86868B" fontWeight="600">IoT</text>
               </g>
 
-              {/* Center Hub */}
-              <g transform="translate(250 250)">
-                 {/* Breathing Glow */}
-                 <motion.circle 
-                   r="48" 
-                   fill="#0071e3" 
-                   initial={{ opacity: 0.1, scale: 0.9 }}
-                   animate={{ opacity: 0.25, scale: 1.15 }}
-                   transition={{ duration: 2.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-                   filter="url(#glow)"
-                 />
-                 
-                 {/* Main Circle - White Background */}
-                 <circle r="38" fill="#FFFFFF" filter="url(#dropShadow)" stroke="#F5F5F7" strokeWidth="1" />
-                 
-                 {/* Icon: Connected Squares */}
-                 <g transform="rotate(-45)">
-                    {/* Connecting Line */}
-                    <line x1="0" y1="-14" x2="0" y2="14" stroke="#0071e3" strokeWidth="2" />
-                    
-                    {/* Top Square */}
-                    <rect x="-6" y="-20" width="12" height="12" rx="3" fill="white" stroke="#0071e3" strokeWidth="2" />
-                    
-                    {/* Center Square (Filled) */}
-                    <rect x="-6" y="-6" width="12" height="12" rx="3" fill="#0071e3" />
-                    
-                    {/* Bottom Square */}
-                    <rect x="-6" y="8" width="12" height="12" rx="3" fill="white" stroke="#0071e3" strokeWidth="2" />
-                 </g>
+              {/* ── Center Hub ── */}
+              <g transform="translate(220,220)">
+                {/* Breathing glow */}
+                <motion.circle r="52" fill="#0071e3"
+                  initial={{ opacity:0.1, scale:0.9 }}
+                  animate={{ opacity:0.18, scale:1.1 }}
+                  transition={{ duration:2.5, repeat:Infinity, repeatType:"reverse", ease:"easeInOut" }}
+                  filter="url(#hubShadow)"
+                />
+                {/* White circle */}
+                <circle r="40" fill="white" filter="url(#cardShadow)"/>
+                {/* EIP chain icon (rotated 45°) */}
+                <g transform="rotate(-45)">
+                  <line x1="0" y1="-10" x2="0" y2="10" stroke="#0071e3" strokeWidth="2.5"/>
+                  <rect x="-9" y="-23" width="18" height="15" rx="5" fill="white" stroke="#0071e3" strokeWidth="2.5"/>
+                  <rect x="-9" y="8"  width="18" height="15" rx="5" fill="#0071e3"/>
+                </g>
               </g>
             </svg>
           </motion.div>
@@ -322,7 +314,7 @@ function ConnectivityUniverse() {
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <section className="py-24 bg-[#FAFAFA]">
+    <section className="py-24 bg-[#FAFAFC]">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="mb-16 text-center md:text-left">
            <h2 className="text-3xl font-bold text-[#1D1D1F] mb-4">300+ 组件，连接一切</h2>
@@ -563,7 +555,7 @@ function DevAndCloud() {
 function SpecsAndCTA() {
   return (
     <>
-      <div className="bg-[#FAFAFA] border-y border-gray-200">
+      <div className="bg-[#FAFAFC] border-y border-gray-200">
         <div className="max-w-[1200px] mx-auto px-6 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-200/50">
             <div>

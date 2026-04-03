@@ -160,6 +160,18 @@ export function PricingPage() {
       ]
     },
     {
+      title: 'AirBit Portal',
+      features: [
+        { name: '交互增强', tooltip: '具备打字机实时流式响应、Markdown 渲染、LaTeX 公式支持、Mermaid 图表展示及文件预览功能', tiers: [true, true, true] },
+        { name: '会话管理', tooltip: '支持多轮对话上下文管理、会话隔离、历史记录搜索、对话分支探索及导出分享', tiers: [true, true, true] },
+        { name: '意图识别与执行', tooltip: '通过 AirBit MCP Gateway 调用企业后台系统（如 ERP、CRM），执行请假申请、客户查询等实际业务操作', tiers: [true, true, true] },
+        { name: '操作确认机制', tooltip: '针对涉及修改数据的写操作，会展示预览并请求用户确认，防止误操作', tiers: [true, true, true] },
+        { name: '知识库问答', tooltip: '自动检索文档并生成回答，并在回复中明确标注信息来源', tiers: [true, true, true] },
+        { name: '安全合规防护', tooltip: '1、敏感数据脱敏：用户输入中的 PII 信息（如手机号、身份证）在发送给模型前会自动脱敏\n2、对话强制：使用 Colang 状态机配置业务流程，确保用户按预定义步骤操作，无法被诱导绕过关键环节\n3、内容管控：只回答业务相关问题，自动拦截或拒绝涉政、暴力等敏感话题', tiers: [true, true, true] },
+        { name: '品牌自定义', tooltip: '支持企业根据自身品牌进行个性化定制', tiers: [false, false, true] },
+      ]
+    },
+    {
       title: '其他',
       features: [
         { name: '告警', tooltip: '多维度告警规则和告警记录且支持钉钉、企微、飞书、邮件', tiers: [true, true, true] },

@@ -47,9 +47,12 @@ export function Navigation() {
     },
     {
       category: '解决方案',
-      items: [
-        { name: '金融行业', pending: true },
-        { name: '通用行业', pending: true },
+        items: [
+          { name: '制造业', pending: false, href: '/solution-manufacturing' },
+          { name: '鞋服行业', pending: false, href: '/solution-fashion' },
+          { name: '食品行业', pending: false, href: '/solution-food' },
+          { name: '教育行业', pending: false, href: '/solution-education' },
+          { name: '事业单位', pending: false, href: '/solution-public' },
       ]
     },
     {

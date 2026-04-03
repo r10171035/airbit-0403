@@ -360,13 +360,72 @@ function CostSecurity() {
                     <span className="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
                  </div>
                </div>
-               <div className="flex items-end gap-2 h-64 pb-4 border-b border-[#E5E5EA]">
-                  {[40, 60, 45, 70, 50, 80, 65, 90, 75, 50, 95, 85].map((h, i) => (
-                    <div key={i} className="flex-1 group relative">
-                       <div className="absolute bottom-0 w-full bg-[#FAFAFC] rounded-t-sm" style={{height: `${h}%`}}></div>
-                       <div className="absolute bottom-0 w-full bg-[#0071E3] rounded-t-sm transition-all group-hover:bg-[#0077ED] opacity-90" style={{height: `${h * 0.7}%`}}></div>
-                    </div>
-                  ))}
+               <div className="h-52 border-b border-[#E5E5EA] pb-2">
+                  <svg viewBox="0 0 420 180" className="w-full h-full" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#0071E3" stopOpacity="0.18" />
+                        <stop offset="100%" stopColor="#0071E3" stopOpacity="0" />
+                      </linearGradient>
+                      <linearGradient id="purpleGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#A855F7" stopOpacity="0.15" />
+                        <stop offset="100%" stopColor="#A855F7" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                    {/* Y-axis grid lines */}
+                    {[30, 75, 120, 165].map((y) => (
+                      <line key={y} x1="0" y1={y} x2="420" y2={y} stroke="#E5E5EA" strokeWidth="1" />
+                    ))}
+                    {/* X-axis labels */}
+                    {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].map((m, i) => (
+                      <text key={m} x={17.5 + i * 35} y="178" textAnchor="middle" fontSize="9" fill="#86868B">{m}</text>
+                    ))}
+                    {/* Blue area (input tokens) */}
+                    <path
+                      d="M17,138 L52,120 L87,130 L122,105 L157,118 L192,95 L227,108 L262,82 L297,95 L332,120 L367,72 L402,85 L402,168 L17,168 Z"
+                      fill="url(#blueGrad)"
+                    />
+                    {/* Purple area (output tokens) */}
+                    <path
+                      d="M17,150 L52,138 L87,145 L122,128 L157,140 L192,118 L227,130 L262,108 L297,122 L332,142 L367,98 L402,112 L402,168 L17,168 Z"
+                      fill="url(#purpleGrad)"
+                    />
+                    {/* Blue line (input tokens) */}
+                    <polyline
+                      points="17,138 52,120 87,130 122,105 157,118 192,95 227,108 262,82 297,95 332,120 367,72 402,85"
+                      fill="none"
+                      stroke="#0071E3"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
+                    />
+                    {/* Purple line (output tokens) */}
+                    <polyline
+                      points="17,150 52,138 87,145 122,128 157,140 192,118 227,130 262,108 297,122 332,142 367,98 402,112"
+                      fill="none"
+                      stroke="#A855F7"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
+                    />
+                    {/* Blue data points */}
+                    {[[17,138],[52,120],[87,130],[122,105],[157,118],[192,95],[227,108],[262,82],[297,95],[332,120],[367,72],[402,85]].map(([x,y],i) => (
+                      <circle key={i} cx={x} cy={y} r="3" fill="#0071E3" />
+                    ))}
+                    {/* Purple data points */}
+                    {[[17,150],[52,138],[87,145],[122,128],[157,140],[192,118],[227,130],[262,108],[297,122],[332,142],[367,98],[402,112]].map(([x,y],i) => (
+                      <circle key={i} cx={x} cy={y} r="3" fill="#A855F7" />
+                    ))}
+                  </svg>
+               </div>
+               {/* Legend */}
+               <div className="flex gap-4 mt-2 mb-2">
+                 <div className="flex items-center gap-1.5 text-xs text-[#86868B]">
+                   <span className="w-3 h-0.5 bg-[#0071E3] inline-block rounded"></span>Input Tokens
+                 </div>
+                 <div className="flex items-center gap-1.5 text-xs text-[#86868B]">
+                   <span className="w-3 h-0.5 bg-purple-500 inline-block rounded"></span>Output Tokens
+                 </div>
                </div>
                <div className="grid grid-cols-3 gap-4 mt-6">
                  <div>

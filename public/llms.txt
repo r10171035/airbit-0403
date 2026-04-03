@@ -1,0 +1,28 @@
+# AirBit
+
+> AirBit is an enterprise AI infrastructure platform for AI gateway, MCP gateway, guardrails, integration, and industry solutions.
+
+## Canonical site
+- https://www.tlin.cn/
+
+## Core pages
+- Home: https://www.tlin.cn/
+- AirBit Portal: https://www.tlin.cn/airbit-portal
+- AirBit AI Gateway: https://www.tlin.cn/airbit-ai-gateway
+- AirBit MCP Gateway: https://www.tlin.cn/airbit-mcp-gateway
+- AirBit Guardrails: https://www.tlin.cn/airbit-guardrails
+- AirBit APIs: https://www.tlin.cn/airbit-apis
+- AirBit EIPs: https://www.tlin.cn/airbit-eips
+- AirBit AIO: https://www.tlin.cn/airbit-aio
+
+## Industry solutions
+- Manufacturing: https://www.tlin.cn/solution-manufacturing
+- Fashion: https://www.tlin.cn/solution-fashion
+- Food: https://www.tlin.cn/solution-food
+- Education: https://www.tlin.cn/solution-education
+- Public sector: https://www.tlin.cn/solution-public
+
+## Company
+- Company: https://www.tlin.cn/company
+- Partner: https://www.tlin.cn/partner
+- Contact: https://www.tlin.cn/contact

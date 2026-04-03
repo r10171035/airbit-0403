@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "postbuild": "react-snap",
     "dev": "vite"
   },
   "reactSnap": {
@@ -25,10 +26,17 @@
       "/contact",
       "/company",
       "/partner",
-      "/pricing"
+      "/pricing",
+      "/solution-manufacturing",
+      "/solution-fashion",
+      "/solution-food",
+      "/solution-education",
+      "/solution-public"
     ]
   },
   "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
     "@mui/icons-material": "7.3.5",
@@ -93,8 +101,8 @@
     "vite": "6.3.5"
   },
   "peerDependencies": {
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "peerDependenciesMeta": {
     "react": {

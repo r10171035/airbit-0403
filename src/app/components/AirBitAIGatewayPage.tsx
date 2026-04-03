@@ -70,65 +70,82 @@ function Hero() {
             transition={{ duration: 1 }}
             className="w-full h-full"
           >
-            <svg viewBox="0 0 500 400" className="w-full h-full drop-shadow-2xl">
+            <svg viewBox="0 0 560 400" className="w-full h-full">
               <defs>
                 <filter id="glow-blue" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="15" result="blur" />
+                  <feGaussianBlur stdDeviation="10" result="blur" />
                   <feComposite in="SourceGraphic" in2="blur" operator="over" />
                 </filter>
-                <linearGradient id="beam-gradient" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#0071E3" stopOpacity="0.1" />
-                  <stop offset="50%" stopColor="#0071E3" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#0071E3" stopOpacity="0.1" />
-                </linearGradient>
+                <filter id="prism-shadow">
+                  <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#0071E3" floodOpacity="0.18"/>
+                </filter>
               </defs>
 
-              {/* Input Streams (Left) */}
-              {[100, 200, 300].map((y, i) => (
+              {/* ── Left: Client App input streams ── */}
+              {([
+                { y: 110, delay: 0 },
+                { y: 200, delay: 0.6 },
+                { y: 290, delay: 1.2 },
+              ] as {y:number, delay:number}[]).map((item, i) => (
                 <g key={`in-${i}`}>
-                   <line x1="50" y1={y} x2="250" y2="200" stroke="url(#beam-gradient)" strokeWidth="2" strokeDasharray="4 4" className="opacity-30" />
-                   {/* Incoming Particles */}
-                   <motion.circle r="3" fill="#86868B" 
-                     animate={{ cx: [50, 250], cy: [y, 200], opacity: [0, 1, 0] }}
-                     transition={{ duration: 2, repeat: Infinity, delay: i * 0.3, ease: "linear" }}
-                   />
+                  <line
+                    x1="80" y1={item.y} x2="240" y2="200"
+                    stroke="#C7C7CC" strokeWidth="1.5" strokeDasharray="5 4"
+                  />
+                  <motion.circle r="3.5" fill="#A0A0A8"
+                    animate={{ cx:[80,240], cy:[item.y,200], opacity:[0,0.9,0] }}
+                    transition={{ duration:2, repeat:Infinity, delay:item.delay, ease:"easeInOut" }}
+                  />
                 </g>
               ))}
 
-              {/* Inputs Label */}
-              <text x="50" y="350" textAnchor="middle" fontSize="12" fill="#86868B" className="uppercase tracking-widest">Client Apps</text>
+              {/* CLIENT APPS label + dots */}
+              <circle cx="80" cy="110" r="4.5" fill="#C7C7CC"/>
+              <circle cx="80" cy="200" r="4.5" fill="#C7C7CC"/>
+              <circle cx="80" cy="290" r="4.5" fill="#C7C7CC"/>
+              <text x="80" y="340" textAnchor="middle" fontSize="10" fill="#A0A0A8" fontWeight="700" letterSpacing="0.08em">CLIENT APPS</text>
 
-              {/* The Prism (Center) */}
-              <g transform="translate(250 200)">
-                <motion.path 
-                  d="M0 -40 L35 20 L-35 20 Z" 
-                  fill="white" 
-                  stroke="#0071E3" 
-                  strokeWidth="2"
+              {/* ── Center: Gateway Prism ── */}
+              <g transform="translate(260,200)">
+                {/* Glow halo */}
+                <motion.circle r="42" fill="#0071E3"
+                  initial={{ opacity:0.08, scale:0.92 }}
+                  animate={{ opacity:0.16, scale:1.08 }}
+                  transition={{ duration:2.5, repeat:Infinity, repeatType:"reverse", ease:"easeInOut" }}
                   filter="url(#glow-blue)"
-                  animate={{ rotate: [0, 5, -5, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 />
-                <circle r="10" fill="#0071E3" className="animate-pulse" />
+                {/* Triangle prism */}
+                <path
+                  d="M0,-38 L44,22 L-44,22 Z"
+                  fill="white" stroke="#0071E3" strokeWidth="2.5"
+                  filter="url(#prism-shadow)"
+                />
+                {/* Center dot */}
+                <motion.circle r="9" fill="#0071E3"
+                  animate={{ r:[8,10,8] }}
+                  transition={{ duration:2, repeat:Infinity, ease:"easeInOut" }}
+                />
               </g>
 
-              {/* Output Beams (Right) */}
-              {[
-                { y: 80, color: "#34C759", label: "OpenAI" },
-                { y: 160, color: "#AF52DE", label: "Claude" },
-                { y: 240, color: "#0071E3", label: "Gemini" },
-                { y: 320, color: "#FF9500", label: "Llama" }
-              ].map((item, i) => (
+              {/* ── Right: Model output beams ── */}
+              {([
+                { y: 80,  color:"#34C759", label:"OpenAI" },
+                { y: 160, color:"#AF52DE", label:"Claude" },
+                { y: 240, color:"#0071E3", label:"Gemini" },
+                { y: 320, color:"#FF9500", label:"Llama"  },
+              ] as {y:number,color:string,label:string}[]).map((item, i) => (
                 <g key={`out-${i}`}>
-                  <line x1="250" y1="200" x2="450" y2={item.y} stroke={item.color} strokeWidth="2" strokeOpacity="0.3" />
-                  {/* Outgoing Token Particles */}
-                  <motion.circle r="3" fill={item.color} 
-                     animate={{ cx: [250, 450], cy: [200, item.y], opacity: [1, 0] }}
-                     transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2, ease: "easeOut" }}
+                  <line
+                    x1="260" y1="200" x2="460" y2={item.y}
+                    stroke={item.color} strokeWidth="1.5" strokeOpacity="0.35"
                   />
-                  {/* Target Node */}
-                  <circle cx="450" cy={item.y} r="5" fill={item.color} />
-                  <text x="460" y={item.y + 4} fontSize="12" fill="#86868B" fontWeight="500">{item.label}</text>
+                  <motion.circle r="3.5" fill={item.color}
+                    animate={{ cx:[260,460], cy:[200,item.y], opacity:[0,1,0] }}
+                    transition={{ duration:1.8, repeat:Infinity, delay:i*0.45, ease:"easeOut" }}
+                  />
+                  {/* Endpoint dot */}
+                  <circle cx="460" cy={item.y} r="6" fill={item.color}/>
+                  <text x="474" y={item.y+4} fontSize="12" fill="#86868B" fontWeight="500">{item.label}</text>
                 </g>
               ))}
             </svg>

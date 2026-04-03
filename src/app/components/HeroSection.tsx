@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Link } from 'react-router';
 import { 
   Network, 
   Bot, 
@@ -16,7 +17,7 @@ import {
   CheckCircle2,
   AlertTriangle
 } from 'lucide-react';
-import dashboardImg from 'figma:asset/144f50de21826e7132ed5c3c56c36094960deecb.png';
+const dashboardImg = '';
 
 // 定义 Tab 的数据结构，包含 7 个核心模块
 const TABS = [
@@ -40,15 +41,61 @@ const TAB_CONTENT = {
       '开箱即用的企业知识库 RAG 极简对接',
       '全员使用行为追踪与可溯源的审计日志'
     ],
-    buttonText: '进入门户',
+    buttonText: '了解更多',
+    href: '/airbit-portal',
     visual: (
-      <div className="w-full h-full relative">
-        <img 
-          src={dashboardImg} 
-          alt="AirBit Portal" 
-          className="w-full h-full object-contain object-right-bottom rounded-xl"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent rounded-xl pointer-events-none" />
+      <div className="w-full h-full bg-[#FAFAFC] rounded-xl border border-[#E5E5EA] shadow-sm flex flex-col overflow-hidden">
+        {/* Header */}
+        <div className="flex items-center gap-3 px-4 py-3 border-b border-[#E5E5EA] bg-white shrink-0">
+          <div className="w-7 h-7 rounded-full bg-[#1D1D1F] flex items-center justify-center">
+            <Bot className="w-3.5 h-3.5 text-white" />
+          </div>
+          <div>
+            <div className="text-[12px] font-semibold text-[#1D1D1F]">AirBit Portal</div>
+            <div className="text-[10px] text-[#34C759] flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#34C759] inline-block" />
+              已直连 ERP · CRM · BI
+            </div>
+          </div>
+        </div>
+        {/* Chat area */}
+        <div className="flex-1 p-4 space-y-3 overflow-hidden flex flex-col justify-end">
+          {/* User bubble */}
+          <div className="flex justify-end">
+            <div className="bg-[#0071E3] text-white text-[12px] px-4 py-2.5 rounded-2xl rounded-tr-sm max-w-[80%] shadow-sm leading-relaxed">
+              帮我查一下 Q3 华东区营收，生成对比报表。
+            </div>
+          </div>
+          {/* AI bubble */}
+          <div className="flex justify-start">
+            <div className="bg-white text-[#1D1D1F] text-[12px] px-4 py-3 rounded-2xl rounded-tl-sm max-w-[90%] border border-[#E5E5EA] shadow-sm leading-relaxed">
+              <p className="mb-3 text-[#1D1D1F]">已为您查询到受控数据，以下是营收对比：</p>
+              {/* Mini chart */}
+              <div className="bg-[#FAFAFC] rounded-lg p-3 border border-[#E5E5EA]">
+                <div className="flex items-end gap-2 h-16">
+                  {[45, 65, 85, 100].map((h, i) => (
+                    <div key={i} className="flex-1 flex flex-col items-center gap-1">
+                      <div
+                        className="w-full rounded-t-md"
+                        style={{ height: `${h}%`, background: `rgba(0,113,227,${0.2 + i * 0.2})` }}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="flex justify-between mt-2 text-[9px] text-[#86868B] font-medium">
+                  <span>7月</span><span>8月</span><span>9月</span><span>10月</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Input bar */}
+          <div className="flex items-center gap-2 bg-white border border-[#E5E5EA] rounded-full px-4 py-2 shadow-sm shrink-0">
+            <span className="flex-1 text-[11px] text-[#86868B]">输入问题，直连业务系统…</span>
+            <div className="w-5 h-5 rounded-full bg-[#0071E3] flex items-center justify-center">
+              <ArrowRight className="w-2.5 h-2.5 text-white" />
+            </div>
+          </div>
+        </div>
       </div>
     )
   },
@@ -331,7 +378,22 @@ const TAB_CONTENT = {
 
 export function HeroSection() {
   const [activeTab, setActiveTab] = useState(TABS[0].id);
+  const [isPaused, setIsPaused] = useState(false);
   const content = TAB_CONTENT[activeTab as keyof typeof TAB_CONTENT] || TAB_CONTENT[TABS[0].id as keyof typeof TAB_CONTENT];
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = window.setInterval(() => {
+      setActiveTab((currentTab) => {
+        const currentIndex = TABS.findIndex((tab) => tab.id === currentTab);
+        const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % TABS.length;
+        return TABS[nextIndex].id;
+      });
+    }, 2500);
+
+    return () => window.clearInterval(interval);
+  }, [isPaused]);
 
   return (
     <section className="relative min-h-screen pt-32 pb-24 overflow-hidden bg-[#FAFAFC]">
@@ -378,6 +440,8 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="max-w-[1080px] mx-auto"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           {/* 顶部 Tab 导航 (扩展为 7 个模块) */}
           <div className="flex flex-wrap justify-center gap-2 mb-8 px-2">
@@ -387,7 +451,10 @@ export function HeroSection() {
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => {
+                    setActiveTab(tab.id);
+                    setIsPaused(true);
+                  }}
                   className={`
                     flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] font-medium transition-all duration-300
                     ${isActive 
@@ -439,10 +506,17 @@ export function HeroSection() {
                     ))}
                   </ul>
 
-                  <button className="flex items-center gap-2 px-6 py-3 bg-[#1D1D1F] hover:bg-[#000000] text-white text-[15px] font-medium rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 group">
-                    {content.buttonText}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  {(content as any).href ? (
+                    <Link to={(content as any).href} className="inline-flex items-center gap-2 text-[#0071E3] hover:underline font-medium text-[15px] group">
+                      {content.buttonText}
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  ) : (
+                    <button className="flex items-center gap-2 px-6 py-3 bg-[#1D1D1F] hover:bg-[#000000] text-white text-[15px] font-medium rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 group">
+                      {content.buttonText}
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  )}
                 </div>
 
                 {/* 右侧：可视化 Mockup 区域 */}
