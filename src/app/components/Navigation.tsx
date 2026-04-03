@@ -51,7 +51,7 @@ export function Navigation() {
     {
       category: '合作伙伴',
       items: [
-        { name: '寻找 NocoBase 伙伴', pending: true },
+        { name: '寻找伙伴', pending: true },
         { name: '成为合作伙伴', pending: false, href: '/partner' },
       ]
     }
