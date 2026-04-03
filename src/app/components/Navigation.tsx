@@ -57,6 +57,14 @@ export function Navigation() {
     }
   ];
 
+  const community = [
+    { name: '论坛', pending: true },
+    { name: '用户故事', pending: true },
+    { name: '更新记录', pending: true },
+    { name: '路线图', pending: true },
+    { name: '博客', pending: true },
+  ];
+
   const resources = [
     { name: '文档 4.x', href: '#' },
     { name: '协议许可', href: '#' },
@@ -177,8 +185,41 @@ export function Navigation() {
               </AnimatePresence>
             </div>
 
+            {/* Community Dropdown */}
+            <div
+              className="relative h-full flex items-center"
+              onMouseEnter={() => setActiveDropdown('community')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className={`flex items-center gap-1 transition-colors ${activeDropdown === 'community' ? 'text-[#0071E3]' : 'text-[#1D1D1F] hover:text-[#0071E3]'}`}>
+                社区
+                <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === 'community' ? 'rotate-180' : ''}`} />
+              </button>
+
+              <AnimatePresence>
+                {activeDropdown === 'community' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-[180px] bg-white rounded-2xl shadow-2xl border border-black/5 p-6 cursor-default"
+                  >
+                    <div className="flex flex-col gap-3">
+                      {community.map((item, idx) => (
+                        <div key={idx} className="flex items-center gap-2">
+                          <span className="text-sm font-medium text-[#86868B]">{item.name}</span>
+                          <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#F5F5F7] text-[#86868B] border border-[#E5E5EA]">即将推出</span>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             {/* Resources Dropdown */}
-            <div 
+            <div
               className="relative h-full flex items-center"
               onMouseEnter={() => setActiveDropdown('resources')}
               onMouseLeave={() => setActiveDropdown(null)}
@@ -263,6 +304,15 @@ export function Navigation() {
                           {item.name} {item.pending && '(即将推出)'}
                         </Link>
                       ))}
+                    </div>
+                  ))}
+                </div>
+                <div className="py-2 border-b border-[#F5F5F7]">
+                  <div className="text-[#86868B] text-xs mb-2 uppercase tracking-wider">社区</div>
+                  {community.map(item => (
+                    <div key={item.name} className="flex items-center gap-2 py-1 pl-2">
+                      <span className="text-sm text-[#86868B]">{item.name}</span>
+                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#F5F5F7] text-[#86868B] border border-[#E5E5EA]">即将推出</span>
                     </div>
                   ))}
                 </div>
