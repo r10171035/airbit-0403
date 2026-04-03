@@ -108,7 +108,8 @@ const TAB_CONTENT = {
       '开箱即用的 Semantic Cache 语义缓存降本',
       '跨区域 (Multi-region) 的低延迟边缘接入'
     ],
-    buttonText: '配置网关',
+    buttonText: '了解更多',
+    href: '/airbit-ai-gateway',
     visual: (
       <div className="w-full h-full bg-[#FAFAFC] rounded-xl border border-[#E5E5EA] shadow-sm flex flex-col overflow-hidden">
         <div className="flex items-center px-4 py-3 border-b border-[#E5E5EA] bg-white">
@@ -158,7 +159,8 @@ const TAB_CONTENT = {
       '隔离沙箱执行，确保内部网络绝对安全',
       '无缝集成主流内部系统 (Jira, Confluence 等)'
     ],
-    buttonText: '连接智能体',
+    buttonText: '了解更多',
+    href: '/airbit-mcp-gateway',
     visual: (
       <div className="w-full h-full bg-white rounded-xl border border-[#E5E5EA] shadow-sm p-6 flex flex-col items-center justify-center relative overflow-hidden">
         <div className="relative w-full max-w-[280px] aspect-square">
@@ -192,7 +194,8 @@ const TAB_CONTENT = {
       '自定义敏感词库与企业内容合规审查',
       '细粒度的模型输出格式校验与阻断机制'
     ],
-    buttonText: '配置策略',
+    buttonText: '了解更多',
+    href: '/airbit-guardrails',
     visual: (
       <div className="w-full h-full bg-[#FAFAFC] rounded-xl border border-[#E5E5EA] p-6 shadow-sm overflow-hidden flex flex-col justify-center items-center">
         <div className="flex flex-col items-center w-full max-w-[280px] gap-3 relative">
@@ -239,7 +242,8 @@ const TAB_CONTENT = {
       '接口级别的版本控制与灰度发布机制',
       '实时追踪每个 API 消费者的用量与延迟'
     ],
-    buttonText: '管理 API',
+    buttonText: '了解更多',
+    href: '/airbit-apis',
     visual: (
       <div className="w-full h-full bg-white rounded-xl border border-[#E5E5EA] shadow-sm flex flex-col overflow-hidden text-left">
         <div className="bg-[#FAFAFC] border-b border-[#E5E5EA] px-4 py-3 flex items-center justify-between">
@@ -285,7 +289,8 @@ const TAB_CONTENT = {
       '高吞吐量的异步消息与事件驱动架构',
       '零信任架构设计，确保端到端数据传输安全'
     ],
-    buttonText: '查看组件库',
+    buttonText: '了解更多',
+    href: '/airbit-eips',
     visual: (
       <div className="w-full h-full bg-[#FAFAFC] rounded-xl border border-[#E5E5EA] p-6 shadow-sm overflow-hidden flex flex-col justify-center">
         <div className="flex flex-col gap-4">
@@ -338,7 +343,8 @@ const TAB_CONTENT = {
       '模型输出质量自动评估与延迟热点分析',
       '基于基线的智能异常检测与实时告警推送'
     ],
-    buttonText: '查看大盘',
+    buttonText: '了解更多',
+    href: '/airbit-aio',
     visual: (
       <div className="w-full h-full bg-white rounded-xl border border-[#E5E5EA] shadow-sm p-5 flex flex-col justify-between">
         <div className="flex justify-between items-center mb-4">
