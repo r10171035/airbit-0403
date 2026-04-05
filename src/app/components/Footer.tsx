@@ -102,7 +102,7 @@ export function Footer() {
                 <li><Link to="/solution-food" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">食品行业</Link></li>
                 <li><Link to="/solution-education" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">教育行业</Link></li>
                 <li><Link to="/solution-public" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">事业单位</Link></li>
-                <li><span className="text-[#6E6E73]">查找伙伴</span></li>
+                <li><Link to="/find-partner" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">寻找伙伴</Link></li>
                 <li><Link to="/partner" className="text-[#6E6E73] hover:text-[#0071E3] transition-colors">成为伙伴</Link></li>
               </ul>
             </div>

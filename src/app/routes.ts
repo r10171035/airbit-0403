@@ -12,6 +12,7 @@ import { AirBitPortalPage } from "./components/AirBitPortalPage";
 import { ContactPage } from "./components/ContactPage";
 import { CompanyPage } from "./components/CompanyPage";
 import { PartnerPage } from "./components/PartnerPage";
+import { FindPartnerPage } from "./components/FindPartnerPage";
 import { PricingPage } from "./components/PricingPage";
 import { SolutionFashionPage } from "./components/SolutionFashionPage";
 import { SolutionFoodPage } from "./components/SolutionFoodPage";
@@ -36,6 +37,7 @@ export const router = createBrowserRouter([
       { path: "contact", Component: ContactPage },
       { path: "company", Component: CompanyPage },
       { path: "partner", Component: PartnerPage },
+      { path: "find-partner", Component: FindPartnerPage },
       { path: "pricing", Component: PricingPage },
       { path: "solution-fashion", Component: SolutionFashionPage },
       { path: "solution-food", Component: SolutionFoodPage },
