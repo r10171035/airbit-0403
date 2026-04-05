@@ -83,10 +83,8 @@ export function FindPartnerPage() {
 
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 px-6 text-center overflow-hidden">
-        {/* subtle gradient blob */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-blue-50 to-transparent rounded-full blur-3xl opacity-60" />
-        </div>
+        {/* 与首页一致的网格背景 */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
         <div className="max-w-[800px] mx-auto relative z-10">
           <motion.div
@@ -152,7 +150,7 @@ export function FindPartnerPage() {
       </section>
 
       {/* ── Services ─────────────────────────────────────────────────── */}
-      <section className="bg-[#FAFAFA] border-y border-black/5 py-24">
+      <section className="bg-[#FAFAFC] border-y border-[#F5F5F7] py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-14">
             <h2 className="text-3xl font-bold mb-3">Airbit 合作伙伴能为您提供什么？</h2>
@@ -184,7 +182,7 @@ export function FindPartnerPage() {
       </section>
 
       {/* ── Contact Form ─────────────────────────────────────────────── */}
-      <section id="contact-form" className="bg-[#FAFAFA] py-24 border-t border-black/5">
+      <section id="contact-form" className="bg-[#FAFAFC] py-24 border-t border-[#F5F5F7]">
         <div className="max-w-[800px] mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">提交您的合作需求</h2>
