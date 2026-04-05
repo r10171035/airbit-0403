@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Network, Layers, Bot, ShieldCheck, Activity, Building2, Briefcase, ShoppingBag, Landmark, CircuitBoard } from 'lucide-react';
+import { Network, Layers, Bot, ShieldCheck, Activity, Cpu, LayoutDashboard } from 'lucide-react';
 import { useSEO } from '../hooks/useSEO';
 
 export function CompanyPage() {
@@ -10,11 +10,13 @@ export function CompanyPage() {
   });
 
   return (
-    <div className="min-h-screen bg-white font-sans text-[#1D1D1F] pt-20">
-      
+    <div className="min-h-screen bg-[#FAFAFC] font-sans text-[#1D1D1F] pt-20 relative">
+      {/* 与首页一致的网格背景 */}
+      <div className="absolute inset-x-0 top-0 h-screen bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 px-6 text-center overflow-hidden">
-        <div className="max-w-[800px] mx-auto relative z-10">
+      <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 px-6 text-center">
+        <div className="max-w-[800px] mx-auto">
           <motion.div
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
@@ -66,7 +68,7 @@ export function CompanyPage() {
       </section>
 
       {/* Core Competitiveness: AirBit Product Matrix */}
-      <section className="bg-[#F5F5F7] py-24">
+      <section className="bg-[#FAFAFC] border-y border-[#F5F5F7] py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">核心竞争力：AirBit 产品矩阵</h2>
@@ -145,12 +147,12 @@ export function CompanyPage() {
             </motion.div>
 
             {/* Card 5: AirBit AIO */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow lg:col-span-1.5"
+              className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center mb-6">
                 <Activity className="w-6 h-6" />
@@ -160,68 +162,75 @@ export function CompanyPage() {
                 AI 可观测性与工程平台。面向大模型应用的 APM 与评测平台，提供全链路追踪，让企业清晰掌握运行成本与数据流向。支持版本控制与 Prompt 优化。
               </p>
             </motion.div>
+
+            {/* Card 6: AirBit MCP Gateway */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="w-12 h-12 bg-teal-100 text-teal-600 rounded-2xl flex items-center justify-center mb-6">
+                <Cpu className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">AirBit MCP Gateway</h3>
+              <p className="text-[#86868B] text-sm leading-relaxed">
+                智能体治理网关。为 AI 模型提供规范化的外部工具调用能力，支持多后端路由、协议桥接与统一鉴权，让 AI 智能体安全可控地访问企业内外部系统。
+              </p>
+            </motion.div>
+
+            {/* Card 7: AirBit Portal */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.7 }}
+              className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="w-12 h-12 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center mb-6">
+                <LayoutDashboard className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">AirBit Portal</h3>
+              <p className="text-[#86868B] text-sm leading-relaxed">
+                企业 AI 业务统一门户。不是简单聊天框，而是企业大模型的方向盘和刹车片。基于全栈 AI 基础设施，为企业打造安全、受控、直连业务的超级智能体交互中心。
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Customers Section */}
+      {/* Certifications Section */}
       <section className="py-24 max-w-[1200px] mx-auto px-6">
-         <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">行业标杆与客户信任</h2>
-            <p className="text-[#86868B] max-w-2xl mx-auto">
-               凭借卓越的技术实力与交付保障，我们成功助力众多行业龙头企业构建数字核心壁垒。
-            </p>
-         </div>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">权威认证与合规保障</h2>
+          <p className="text-[#86868B] max-w-2xl mx-auto">
+            通过国际权威认证，以严格的管理体系为企业客户提供可信赖的质量、服务与安全保障。
+          </p>
+        </div>
 
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Fashion */}
-            <div className="space-y-4">
-               <div className="flex items-center gap-3 mb-2 text-[#0071E3]">
-                  <ShoppingBag className="w-5 h-5" />
-                  <h3 className="font-semibold">时尚鞋服</h3>
-               </div>
-               <div className="bg-[#F5F5F7] rounded-2xl p-6 space-y-3">
-                  <div className="font-medium text-[#1D1D1F]">安踏集团</div>
-                  <div className="font-medium text-[#1D1D1F]">特步集团</div>
-                  <div className="font-medium text-[#1D1D1F]">七匹狼集团</div>
-               </div>
-            </div>
-
-            {/* FMCG */}
-            <div className="space-y-4">
-               <div className="flex items-center gap-3 mb-2 text-indigo-600">
-                  <Briefcase className="w-5 h-5" />
-                  <h3 className="font-semibold">快消实业</h3>
-               </div>
-               <div className="bg-[#F5F5F7] rounded-2xl p-6 space-y-3">
-                  <div className="font-medium text-[#1D1D1F]">达利集团</div>
-                  <div className="font-medium text-[#1D1D1F]">海峡石化</div>
-               </div>
-            </div>
-
-            {/* Gov/City Investment */}
-            <div className="space-y-4">
-               <div className="flex items-center gap-3 mb-2 text-purple-600">
-                  <Landmark className="w-5 h-5" />
-                  <h3 className="font-semibold">国资城投</h3>
-               </div>
-               <div className="bg-[#F5F5F7] rounded-2xl p-6 space-y-3">
-                  <div className="font-medium text-[#1D1D1F]">苏州城投</div>
-                  <div className="font-medium text-[#1D1D1F]">河南投资</div>
-               </div>
-            </div>
-
-            {/* Tech */}
-            <div className="space-y-4">
-               <div className="flex items-center gap-3 mb-2 text-orange-600">
-                  <CircuitBoard className="w-5 h-5" />
-                  <h3 className="font-semibold">科技创新</h3>
-               </div>
-               <div className="bg-[#F5F5F7] rounded-2xl p-6 space-y-3">
-                  <div className="font-medium text-[#1D1D1F]">科拓股份</div>
-               </div>
-            </div>
-         </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            { img: '/iso-9001.png',  label: 'ISO 9001',  desc: '质量管理体系认证，确保产品研发与交付全流程符合国际质量标准。' },
+            { img: '/iso-20000.png', label: 'ISO 20000', desc: 'IT 服务管理体系认证，保障服务持续性与高可用性，满足企业级 SLA 要求。' },
+            { img: '/iso-27001.png', label: 'ISO 27001', desc: '信息安全管理体系认证，以系统化安全控制保护企业数据资产与隐私合规。' },
+          ].map((cert, i) => (
+            <motion.div
+              key={cert.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * (i + 1) }}
+              className="bg-[#F5F5F7] rounded-3xl p-10 text-center"
+            >
+              <div className="flex items-center justify-center mx-auto mb-6 h-36">
+                <img src={cert.img} alt={cert.label} className="h-full w-auto object-contain" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">{cert.label}</h3>
+              <p className="text-[#86868B] text-sm leading-relaxed">{cert.desc}</p>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
     </div>
